@@ -1,0 +1,26 @@
+{
+  "printWidth": 80,
+  "editor.fontSize":16,
+  "editor.lineHeight":24,
+  "editor.fontFamily":"Fira Code",
+  "editor.fontLigatures":true,
+  "sortImports": true,
+  "importOrder": ["^@src/", "^react", "^[a-z].*"],
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "alignObjectProperties": true,
+  "editor.renderLineHighlight":"gutter",
+  "terminal.integrated.fontSize":14,
+  "workbench.iconTheme":"material-icon-theme",
+  "braceSameLine": false,
+  "jsxSortProps": true,
+  "singleQuote": true,
+  "jsxBracketSameLine": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "semi": true
+
+
+}
