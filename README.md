@@ -27,8 +27,6 @@ O projeto possui a seguinte estrutura de diretórios:
 
 |-- utils/ # Funções e utilitários auxiliares
 
-bash
-
 ## Iniciando
 
 Para iniciar o projeto em seu ambiente local, siga estas etapas:
@@ -39,14 +37,13 @@ Para iniciar o projeto em seu ambiente local, siga estas etapas:
    git clone https://github.com/seu-usuario/seu-projeto-next.git
 Instale as dependências:
 
-shell
-Copy code
 cd seu-projeto-next
+
 npm install
+
 Inicie o servidor de desenvolvimento:
 
-shell
-Copy code
 npm run dev
+
 Agora, você pode acessar o projeto em http://localhost:3000 no seu navegador.
 
