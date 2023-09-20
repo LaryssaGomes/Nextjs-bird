@@ -47,3 +47,10 @@ npm run dev
 
 Agora, você pode acessar o projeto em http://localhost:3000 no seu navegador.
 
+## Design
+
+O design deste projeto foi criado no Figma. Você pode visualizar o protótipo completo clicando no link abaixo:
+
+[Link para o Design no Figma](https://www.figma.com/file/cXwqHGaJzQp8RsUIuuHcEJ/Untitled?type=design&node-id=0-1&mode=design&t=J6XMXIALVrIGrFIq-0)
+
+
