@@ -34,7 +34,7 @@ Para iniciar o projeto em seu ambiente local, siga estas etapas:
 1. Clone este repositório:
 
    ```shell
-   git clone https://github.com/seu-usuario/seu-projeto-next.git
+   git clone https://github.com/LaryssaGomes/Nextjs-bird.git
 Instale as dependências:
 
 cd seu-projeto-next
