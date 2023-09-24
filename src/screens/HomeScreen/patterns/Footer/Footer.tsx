@@ -1,12 +1,15 @@
 import Box from '@src/components/Box/Box';
-import Button from '@src/components/Button/Button';
 import Icon from '@src/components/Icon/Icon';
-import Link from '@src/components/Link/Link';
 import Text from '@src/components/Text/Text';
 import { useTheme } from '@src/theme/ThemeProvider';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import { useState } from 'react';
+
+const AnimatedLink = styled(animated.a)`
+  cursor: pointer;
+  display: inline-block;
+`;
 
 export const Footer = () => {
   const theme = useTheme();
@@ -15,19 +18,14 @@ export const Footer = () => {
     to: async (next, cancel) => {
       while (true) {
         await next({ transform: 'rotate(0deg)' });
-        await next({ transform: 'rotate(10deg)' });
-        await next({ transform: 'rotate(-10deg)' });
+        await next({ transform: 'rotate(5deg)' });
+        await next({ transform: 'rotate(-5deg)' });
         await next({ transform: 'rotate(0deg)' });
         await cancel();
       }
     },
-    config: { duration: 500 },
+    config: { duration: 250 },
   });
-
-  const AnimatedLink = styled(animated.a)`
-    cursor: pointer;
-    display: inline-block;
-  `;
 
   return (
     <>

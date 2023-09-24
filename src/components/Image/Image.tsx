@@ -1,30 +1,11 @@
-import { parseStyleSheet } from '@displaykit/responsive_styles';
-import NextImage, { ImageProps } from 'next/image';
-import { styled } from 'styled-components';
+import { BaseComponent } from '@src/theme/BaseComponent';
+import { StyleSheet } from '@src/theme/StyleSheet';
 
-interface CustomImageProps extends Omit<ImageProps, 'src' | 'alt'> {
+interface ImageProps {
   src: string;
   alt: string;
   styleSheet?: StyleSheet;
 }
-
-const ImageComponent = styled(NextImage)<CustomImageProps>`
-  ${({ styleSheet }) => parseStyleSheet(styleSheet)}
-`;
-const Image = ({ src, alt, styleSheet, ...props }: CustomImageProps) => {
-  return (
-    <ImageComponent
-      src={src}
-      alt={alt}
-      styleSheet={styleSheet}
-      loading="lazy"
-      {...props}
-    />
-  );
-};
-
-Image.defaultProps = {
-  styleSheet: {},
-};
-
-export default Image;
+export default function Image({ src, alt, ...props }: ImageProps) {
+  return <BaseComponent as="img" src={src} alt={alt} {...props} />;
+}
