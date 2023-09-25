@@ -16,6 +16,7 @@ export const Background = ({ children }: BackgroundProps) => {
       styleSheet={{
         width: '100vw',
         height: '100vh',
+        paddin: '1rem 2rem',
         backgroundColor: theme.colors.neutral.x050,
       }}
     >
