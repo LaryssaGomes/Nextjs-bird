@@ -32,12 +32,9 @@ export const Footer = () => {
       <Box
         tag="footer"
         styleSheet={{
-          position: 'absolute',
-          bottom: '0',
-          width: '100%',
+          minWidth: '100%',
           flexDirection: 'row',
           justifyContent: 'space-between',
-          paddin: '1rem 2rem',
           flexWrap: 'wrap',
           alignContent: 'center',
         }}

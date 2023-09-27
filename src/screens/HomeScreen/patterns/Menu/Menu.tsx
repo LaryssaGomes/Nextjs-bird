@@ -5,9 +5,10 @@ import { useTheme } from '@src/theme/ThemeProvider';
 import { ReactNode, useState } from 'react';
 import { StyleSheet } from '@src/theme/StyleSheet';
 import { BaseComponent } from '@src/theme/BaseComponent';
-import { MenuHamburger } from './MenuHmburger';
+
 import Link from '@src/components/Link/Link';
 import { animated, useSpring } from 'react-spring';
+import { MenuHamburger } from './MenuHmburger';
 
 interface MenuProps {
   styleSheet?: StyleSheet;
@@ -73,6 +74,8 @@ const TextLink = styled(animated.a)`
   }
 `;
 
+const BoxNav = styled(Box)``;
+
 export const Menu = (props: MenuProps) => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
   const handleMenuIsVisible = () => {
@@ -90,8 +93,9 @@ export const Menu = (props: MenuProps) => {
     <Box
       styleSheet={{
         position: 'absolute',
-        width: '100vw',
+        width: '100%',
         height: '100px',
+        top: '0px',
         display: 'flex',
         flexDirection: { xs: 'row' },
         alignItems: { xs: 'center', md: '' },
@@ -102,7 +106,8 @@ export const Menu = (props: MenuProps) => {
     >
       <MenuHamburger
         styleSheet={{
-          display: 'none',
+          position: 'absolute',
+          display: { xs: 'flex', md: 'none' },
         }}
         menuIsVisible={menuIsVisible}
         handleMenuIsVisible={handleMenuIsVisible}
@@ -112,7 +117,7 @@ export const Menu = (props: MenuProps) => {
         styleSheet={{
           width: { xs: '100%', md: '60%' },
           height: '100px',
-          display: 'flex',
+          display: menuIsVisible ? 'flex' : { xs: 'none', md: 'flex' },
           flexDirection: { xs: 'column', md: 'row' },
           marginTop: { xs: '100px', md: '0px' },
           gap: '3rem 0rem ',

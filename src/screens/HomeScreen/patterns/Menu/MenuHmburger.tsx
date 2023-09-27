@@ -1,3 +1,4 @@
+import { parseStyleSheet } from '@displaykit/responsive_styles';
 import Box from '@src/components/Box/Box';
 import Button from '@src/components/Button/Button';
 import ButtonBase from '@src/components/Button/ButtonBase';
@@ -42,16 +43,19 @@ const revAnimeteLine3 = keyframes`
 
 interface MenuProps {
   menuIsVisible: boolean;
+  styleSheet: StyleSheet;
 }
 const MenuIcon = styled(BaseComponent)<MenuProps>`
   cursor: pointer;
   position: relative;
   z-index: 3;
 
+  ${({ styleSheet }) => parseStyleSheet(styleSheet)}
+
   div {
     box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.2);
     background: #31754d;
-    width: 60px;
+    width: 50px;
     height: 8px;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -100,11 +104,12 @@ export const MenuHamburger = ({
   handleMenuIsVisible,
   styleSheet,
 }: MenuHamburgerProps) => {
+  console.log(styleSheet);
   return (
     <MenuIcon
       onClick={handleMenuIsVisible}
       menuIsVisible={menuIsVisible}
-      styleSheet={{ display: 'none' }}
+      styleSheet={styleSheet}
     >
       <div className="line-1"></div>
       <div className="line-2"></div>

@@ -16,7 +16,6 @@ export const Background = ({ children }: BackgroundProps) => {
       styleSheet={{
         width: '100vw',
         height: '100vh',
-        paddin: '1rem 2rem',
         backgroundColor: theme.colors.neutral.x050,
       }}
     >
@@ -36,8 +35,15 @@ export const Background = ({ children }: BackgroundProps) => {
         src="/images/Backgound-planta.svg"
         alt="planta"
       />
-
-      {children}
+      <Box
+        styleSheet={{
+          maxWidth: '1980px',
+          height: '100vh',
+          margin: '0rem 3rem',
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   );
 };
