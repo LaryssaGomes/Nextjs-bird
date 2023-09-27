@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: column; 
+    overflow: hidden;    
   }
   #__next {
     width: 100%;
@@ -23,14 +24,13 @@ const GlobalStyle = createGlobalStyle`
     align-content: flex-start;
     flex-shrink: 0;
   }
-  // ============
-  // [Dark Mode Styles]
-  /* body.dark {
-    color: #FFFFFF; 
-    background-color: #111111;
-  } */
-  // ============
-  // [Reset Styles]
+  ul {
+  list-style: none; 
+  padding: 0; 
+}
+a {
+  text-decoration: none;
+}
   * {
     box-sizing: border-box;
     margin: 0;

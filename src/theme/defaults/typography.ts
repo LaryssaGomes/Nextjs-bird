@@ -14,7 +14,8 @@ export const typography = {
         xs: '700',
       },
       fontSize: {
-        xs: '24px',
+        xs: '16px',
+        md: '24px'
       },
     },
     body2: {

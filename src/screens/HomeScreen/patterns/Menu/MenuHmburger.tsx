@@ -1,4 +1,8 @@
 import Box from '@src/components/Box/Box';
+import Button from '@src/components/Button/Button';
+import ButtonBase from '@src/components/Button/ButtonBase';
+import { BaseComponent } from '@src/theme/BaseComponent';
+import { StyleSheet } from '@src/theme/StyleSheet';
 import styled, { keyframes, css } from 'styled-components';
 
 const animeteLine1 = keyframes`
@@ -39,15 +43,14 @@ const revAnimeteLine3 = keyframes`
 interface MenuProps {
   menuIsVisible: boolean;
 }
-const MenuIcon = styled.div<MenuProps>`
+const MenuIcon = styled(BaseComponent)<MenuProps>`
   cursor: pointer;
-  position: 'relative';
-  display: inline-block;
+  position: relative;
   z-index: 3;
 
   div {
     box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.2);
-    background: #2aab5e;
+    background: #31754d;
     width: 60px;
     height: 8px;
     margin-bottom: 10px;
@@ -95,9 +98,14 @@ interface MenuHamburgerProps {
 export const MenuHamburger = ({
   menuIsVisible,
   handleMenuIsVisible,
+  styleSheet,
 }: MenuHamburgerProps) => {
   return (
-    <MenuIcon onClick={handleMenuIsVisible} menuIsVisible={menuIsVisible}>
+    <MenuIcon
+      onClick={handleMenuIsVisible}
+      menuIsVisible={menuIsVisible}
+      styleSheet={{ display: 'none' }}
+    >
       <div className="line-1"></div>
       <div className="line-2"></div>
       <div className="line-3"></div>

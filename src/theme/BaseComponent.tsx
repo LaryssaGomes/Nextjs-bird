@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { StyleSheetManager } from "styled-components";
-import { StyleSheet } from "./StyleSheet";
-import { parseStyleSheet } from "@displaykit/responsive_styles";
+import React from 'react';
+import styled, { StyleSheetManager } from 'styled-components';
+import { StyleSheet } from './StyleSheet';
+import { parseStyleSheet } from '@displaykit/responsive_styles';
 
 interface StyledBaseComponentProps {
   styleSheet?: StyleSheet;
@@ -16,7 +16,7 @@ const StyledBaseComponent = styled.div<StyledBaseComponentProps>`
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
 `;
 
-interface BaseComponentProps {
+export interface BaseComponentProps {
   styleSheet: StyleSheet;
   [key: string]: any;
 }
@@ -24,11 +24,11 @@ interface BaseComponentProps {
 export const BaseComponent = React.forwardRef<unknown, BaseComponentProps>(
   (props, ref) => {
     return (
-      <StyleSheetManager shouldForwardProp={(prop) => prop !== "styleSheet"}>
+      <StyleSheetManager shouldForwardProp={(prop) => prop !== 'styleSheet'}>
         <StyledBaseComponent ref={ref} {...props} />
       </StyleSheetManager>
     );
-  }
+  },
 );
 
 BaseComponent.defaultProps = {
