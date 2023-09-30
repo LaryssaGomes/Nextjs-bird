@@ -5,54 +5,17 @@ import { useTheme } from '@src/theme/ThemeProvider';
 import { ReactNode, useState } from 'react';
 import { StyleSheet } from '@src/theme/StyleSheet';
 import { BaseComponent } from '@src/theme/BaseComponent';
-
 import Link from '@src/components/Link/Link';
 import { animated, useSpring } from 'react-spring';
 import { MenuHamburger } from './MenuHmburger';
+import { parseStyleSheet } from '@displaykit/responsive_styles';
 
 interface MenuProps {
   styleSheet?: StyleSheet;
 }
-const animeteExpand = keyframes`
-  100% {   transform: translate(-50%, -50%) scale(80); }
-`;
-
-const animeteMin = keyframes`
-  0% { transform:  translate(-50%, -50%) scale(80);; }
-  100% { transform: translate(-50%, -50%) scale(0); }
-`;
-
-interface BackgroundMobileProps {
-  menuIsVisible: boolean;
-}
 
 const animeteExpandBorderBottom = keyframes`
   100% {   transform: translate(-50%, -50%) scale(80); }
-`;
-
-const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
-  position: 'relative';
-  display: inline-block;
-  z-index: 2;
-  width: 100px;
-  height: 100px;
-  background-color: #31754c;
-  ${({ menuIsVisible }) =>
-    menuIsVisible
-      ? css`
-          background-color: #7ab793;
-          border-radius: 50%;
-          position: absolute;
-          transform-origin: center;
-          animation: ${animeteExpand} 1s both;
-        `
-      : css`
-          background-color: #7ab793;
-          border-radius: 50%;
-          position: absolute;
-          transform-origin: center;
-          animation: ${animeteMin} 1s both;
-        `};
 `;
 
 const TextLink = styled(animated.a)`
@@ -70,32 +33,84 @@ const TextLink = styled(animated.a)`
   }
 
   &:hover:after {
-    width: 100%; /* Expandir a largura quando o mouse passar por cima */
+    width: 100%;
   }
 `;
+const animeteExpand = keyframes`
+  100% {   transform: translate(-50%, -50%) scale(80); }
+`;
 
-const BoxNav = styled(Box)``;
+const animeteMin = keyframes`
+  0% { transform:  translate(-50%, -50%) scale(80);; }
+  100% { transform: translate(-50%, -50%) scale(0); }
+`;
+
+interface BackgroundMobileProps {
+  animationStatus: string;
+  styleSheet: StyleSheet;
+}
+const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
+  position: 'relative';
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  background-color: #31754c;
+  ${({ styleSheet }) => parseStyleSheet(styleSheet)}
+  ${({ animationStatus }) => {
+    if (animationStatus === 'expandir') {
+      return css`
+        background-color: #7ab793;
+        border-radius: 50%;
+        position: absolute;
+        transform-origin: center;
+        animation: ${animeteExpand} 1s both;
+      `;
+    } else if (animationStatus === 'diminuir') {
+      return css`
+        background-color: #7ab793;
+        border-radius: 50%;
+        position: absolute;
+        transform-origin: center;
+        animation: ${animeteMin} 1s both;
+      `;
+    }
+  }};
+`;
+
+export const StatusMobileMenuBackground = {
+  EXPANDIR: 'expandir',
+  DIMINUIR: 'diminuir',
+  SEM_EXECUCAO: 'sem_execucao',
+};
 
 export const Menu = (props: MenuProps) => {
-  const [menuIsVisible, setMenuIsVisible] = useState(false);
+  const [animationStatus, setAnimationStatus] = useState(
+    StatusMobileMenuBackground.SEM_EXECUCAO,
+  );
+
   const handleMenuIsVisible = () => {
-    setMenuIsVisible((pre) => !pre);
+    if (animationStatus === StatusMobileMenuBackground.SEM_EXECUCAO) {
+      setAnimationStatus(StatusMobileMenuBackground.EXPANDIR);
+    } else if (animationStatus === StatusMobileMenuBackground.EXPANDIR) {
+      setAnimationStatus(StatusMobileMenuBackground.DIMINUIR);
+    } else {
+      setAnimationStatus(StatusMobileMenuBackground.EXPANDIR);
+    }
   };
+
   const theme = useTheme();
 
   const [isHovered, setIsHovered] = useState(false);
   const swingAnimation = useSpring({
-    width: '100%', // Altere a largura para 100% quando o mouse passar por cima
-    from: { width: '0%' }, // Comece com uma largura de 0%
+    width: '100%',
+    from: { width: '0%' },
     config: { duration: 250 },
   });
   return (
     <Box
       styleSheet={{
-        position: 'absolute',
         width: '100%',
         height: '100px',
-        top: '0px',
         display: 'flex',
         flexDirection: { xs: 'row' },
         alignItems: { xs: 'center', md: '' },
@@ -109,15 +124,18 @@ export const Menu = (props: MenuProps) => {
           position: 'absolute',
           display: { xs: 'flex', md: 'none' },
         }}
-        menuIsVisible={menuIsVisible}
+        menuIsVisible={animationStatus === StatusMobileMenuBackground.EXPANDIR}
         handleMenuIsVisible={handleMenuIsVisible}
       />
       <Box
         tag="ul"
         styleSheet={{
-          width: { xs: '100%', md: '60%' },
+          width: { xs: 'calc(100vw - 100px)', md: '100%' },
           height: '100px',
-          display: menuIsVisible ? 'flex' : { xs: 'none', md: 'flex' },
+          display:
+            animationStatus === StatusMobileMenuBackground.EXPANDIR
+              ? 'flex'
+              : { xs: 'none', md: 'flex' },
           flexDirection: { xs: 'column', md: 'row' },
           marginTop: { xs: '100px', md: '0px' },
           gap: '3rem 0rem ',
@@ -142,8 +160,15 @@ export const Menu = (props: MenuProps) => {
           </Text>
         </li>
       </Box>
-
-      <BackgroundMobile menuIsVisible={menuIsVisible} />
+      <BackgroundMobile
+        styleSheet={{
+          display:
+            animationStatus !== StatusMobileMenuBackground.SEM_EXECUCAO
+              ? 'flex'
+              : 'none',
+        }}
+        animationStatus={animationStatus}
+      />
     </Box>
   );
 };

@@ -17,10 +17,15 @@ export const Background = ({ children }: BackgroundProps) => {
         width: '100vw',
         height: '100vh',
         backgroundColor: theme.colors.neutral.x050,
+        padding: '0rem 3rem',
       }}
     >
       <Image
-        styleSheet={{ width: { xs: '100px', md: '200px' } }}
+        styleSheet={{
+          position: 'absolute',
+          left: '0',
+          width: { xs: '100px', md: '200px' },
+        }}
         src="/images/Backgound-planta.svg"
         alt="planta"
       />
@@ -38,8 +43,8 @@ export const Background = ({ children }: BackgroundProps) => {
       <Box
         styleSheet={{
           maxWidth: '1980px',
+          width: '100%',
           height: '100vh',
-          margin: '0rem 3rem',
         }}
       >
         {children}

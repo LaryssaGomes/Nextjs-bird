@@ -52,7 +52,7 @@ const MenuIcon = styled(BaseComponent)<MenuProps>`
 
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
 
-  div {
+  span {
     box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.2);
     background: #31754d;
     width: 50px;
@@ -60,7 +60,7 @@ const MenuIcon = styled(BaseComponent)<MenuProps>`
     margin-bottom: 10px;
     border-radius: 8px;
   }
-  div .line-2 {
+  span .line-2 {
     background: 'red';
   }
   ${({ menuIsVisible }) =>
@@ -111,9 +111,9 @@ export const MenuHamburger = ({
       menuIsVisible={menuIsVisible}
       styleSheet={styleSheet}
     >
-      <div className="line-1"></div>
-      <div className="line-2"></div>
-      <div className="line-3"></div>
+      <span className="line-1"></span>
+      <span className="line-2"></span>
+      <span className="line-3"></span>
     </MenuIcon>
   );
 };
