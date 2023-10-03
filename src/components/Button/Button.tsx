@@ -1,7 +1,7 @@
-import { useTheme } from "@src/theme/ThemeProvider";
-import ButtonBase, { ButtonBaseProps } from "./ButtonBase";
-import { ButtonSize, buttonSize } from "./buttonSize";
-import { ColorVariant, colorVariantBy, Variant } from "./colorVariantBy";
+import { useTheme } from '@src/theme/ThemeProvider';
+import ButtonBase, { ButtonBaseProps } from './ButtonBase';
+import { ButtonSize, buttonSize } from './buttonSize';
+import { ColorVariant, colorVariantBy, Variant } from './colorVariantBy';
 
 interface ButtonProps extends ButtonBaseProps {
   fullWidth?: boolean;
@@ -21,7 +21,7 @@ export default function Button({
   const theme = useTheme();
   return (
     <ButtonBase
-    styleSheet={{
+      styleSheet={{
         alignSelf: 'flex-start',
         // [Color + Variant]
         ...colorVariantBy(theme, colorVariant, variant),
@@ -44,6 +44,6 @@ Button.defaultProps = {
   size: 'md',
   variant: 'contained',
   colorVariant: 'primary',
-}
+};
 
 Button.Base = ButtonBase;

@@ -10,12 +10,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     display: flex;
     flex: 1;
-    flex-direction: column; 
-    overflow: hidden;    
+    flex-direction: column;   
   }
   #__next {
     width: 100%;
-    overflow: hidden;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -25,12 +23,27 @@ const GlobalStyle = createGlobalStyle`
     flex-shrink: 0;
   }
   ul {
-  list-style: none; 
-  padding: 0; 
-}
-a {
-  text-decoration: none;
-}
+    list-style: none; 
+    padding: 0; 
+  }
+  a {
+    text-decoration: none;
+  }
+  input {
+    border: none ;
+    background: none ;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input::placeholder{
+    color: #FFF5F5;
+    opacity: 0.5;
+  }
+
+
   * {
     box-sizing: border-box;
     margin: 0;

@@ -3,10 +3,10 @@ export const typography = {
   variants: {
     title1: {
       fontWeight: {
-        xs: '400',
+        xs: '700',
       },
       fontSize: {
-        xs: '64px',
+        xs: '48px',
       },
     },
     title2: {
@@ -21,6 +21,14 @@ export const typography = {
     body2: {
       fontWeight: {
         xs: '400',
+      },
+      fontSize: {
+        xs: '16px',
+      },
+    },
+    body1: {
+      fontWeight: {
+        xs: '700',
       },
       fontSize: {
         xs: '16px',

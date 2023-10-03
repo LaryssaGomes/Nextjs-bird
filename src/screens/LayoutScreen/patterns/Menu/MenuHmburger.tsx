@@ -104,7 +104,6 @@ export const MenuHamburger = ({
   handleMenuIsVisible,
   styleSheet,
 }: MenuHamburgerProps) => {
-  console.log(styleSheet);
   return (
     <MenuIcon
       onClick={handleMenuIsVisible}

@@ -10,6 +10,12 @@ import { animated, useSpring } from 'react-spring';
 import { MenuHamburger } from './MenuHmburger';
 import { parseStyleSheet } from '@displaykit/responsive_styles';
 
+const StatusMobileMenuBackground = {
+  EXPANDIR: 'expandir',
+  DIMINUIR: 'diminuir',
+  SEM_EXECUCAO: 'sem_execucao',
+};
+
 interface MenuProps {
   styleSheet?: StyleSheet;
 }
@@ -57,7 +63,7 @@ const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
   background-color: #31754c;
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
   ${({ animationStatus }) => {
-    if (animationStatus === 'expandir') {
+    if (animationStatus === StatusMobileMenuBackground.EXPANDIR) {
       return css`
         background-color: #7ab793;
         border-radius: 50%;
@@ -65,7 +71,7 @@ const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
         transform-origin: center;
         animation: ${animeteExpand} 1s both;
       `;
-    } else if (animationStatus === 'diminuir') {
+    } else if (animationStatus === StatusMobileMenuBackground.DIMINUIR) {
       return css`
         background-color: #7ab793;
         border-radius: 50%;
@@ -76,12 +82,6 @@ const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
     }
   }};
 `;
-
-export const StatusMobileMenuBackground = {
-  EXPANDIR: 'expandir',
-  DIMINUIR: 'diminuir',
-  SEM_EXECUCAO: 'sem_execucao',
-};
 
 export const Menu = (props: MenuProps) => {
   const [animationStatus, setAnimationStatus] = useState(
@@ -145,17 +145,17 @@ export const Menu = (props: MenuProps) => {
         }}
       >
         <li>
-          <Text variant="title2">
+          <Text variant="body1">
             <TextLink>Página inicial</TextLink>
           </Text>
         </li>
         <li>
-          <Text variant="title2">
+          <Text variant="body1">
             <TextLink>Sobre</TextLink>
           </Text>
         </li>
         <li>
-          <Text variant="title2">
+          <Text variant="body1">
             <TextLink>Contato</TextLink>
           </Text>
         </li>

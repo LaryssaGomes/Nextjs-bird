@@ -14,8 +14,7 @@ export const Background = ({ children }: BackgroundProps) => {
   return (
     <Box
       styleSheet={{
-        width: '100vw',
-        height: '100vh',
+        width: '100svw',
         backgroundColor: theme.colors.neutral.x050,
         padding: '0rem 3rem',
       }}
@@ -44,7 +43,6 @@ export const Background = ({ children }: BackgroundProps) => {
         styleSheet={{
           maxWidth: '1980px',
           width: '100%',
-          height: '100vh',
         }}
       >
         {children}
