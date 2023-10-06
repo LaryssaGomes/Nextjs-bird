@@ -43,11 +43,12 @@ const TextLink = styled(animated.a)`
   }
 `;
 const animeteExpand = keyframes`
-  100% {   transform: translate(-50%, -50%) scale(80); }
+0% { transform: translate(-50%, -50%) scale(0);}
+  100% {   transform: translate(-50%, -50%) scale(40); }
 `;
 
 const animeteMin = keyframes`
-  0% { transform:  translate(-50%, -50%) scale(80);; }
+  0% { transform:  translate(-50%, -50%) scale(40); }
   100% { transform: translate(-50%, -50%) scale(0); }
 `;
 
@@ -56,10 +57,11 @@ interface BackgroundMobileProps {
   styleSheet: StyleSheet;
 }
 const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
-  position: 'relative';
-  z-index: 2;
-  width: 100px;
-  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: #31754c;
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
   ${({ animationStatus }) => {
@@ -67,16 +69,12 @@ const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
       return css`
         background-color: #7ab793;
         border-radius: 50%;
-        position: absolute;
-        transform-origin: center;
-        animation: ${animeteExpand} 1s both;
+        animation: ${animeteExpand} 3s both;
       `;
     } else if (animationStatus === StatusMobileMenuBackground.DIMINUIR) {
       return css`
         background-color: #7ab793;
         border-radius: 50%;
-        position: absolute;
-        transform-origin: center;
         animation: ${animeteMin} 1s both;
       `;
     }
@@ -107,61 +105,11 @@ export const Menu = (props: MenuProps) => {
     config: { duration: 250 },
   });
   return (
-    <Box
-      styleSheet={{
-        width: '100%',
-        height: '100px',
-        display: 'flex',
-        flexDirection: { xs: 'row' },
-        alignItems: { xs: 'center', md: '' },
-        alignContent: 'end',
-        justifyContent: { xs: '', md: 'flex-end' },
-      }}
-      tag="header"
-    >
-      <MenuHamburger
-        styleSheet={{
-          position: 'absolute',
-          display: { xs: 'flex', md: 'none' },
-        }}
-        menuIsVisible={animationStatus === StatusMobileMenuBackground.EXPANDIR}
-        handleMenuIsVisible={handleMenuIsVisible}
-      />
-      <Box
-        tag="ul"
-        styleSheet={{
-          width: { xs: 'calc(100vw - 100px)', md: '100%' },
-          height: '100px',
-          display:
-            animationStatus === StatusMobileMenuBackground.EXPANDIR
-              ? 'flex'
-              : { xs: 'none', md: 'flex' },
-          flexDirection: { xs: 'column', md: 'row' },
-          marginTop: { xs: '100px', md: '0px' },
-          gap: '3rem 0rem ',
-          alignItems: { xs: 'center', md: '' },
-          alignContent: 'end',
-          justifyContent: { xs: '', md: 'space-around' },
-        }}
-      >
-        <li>
-          <Text variant="body1">
-            <TextLink>Página inicial</TextLink>
-          </Text>
-        </li>
-        <li>
-          <Text variant="body1">
-            <TextLink>Sobre</TextLink>
-          </Text>
-        </li>
-        <li>
-          <Text variant="body1">
-            <TextLink>Contato</TextLink>
-          </Text>
-        </li>
-      </Box>
+    <>
       <BackgroundMobile
         styleSheet={{
+          width: '100vw',
+          height: '100vh',
           display:
             animationStatus !== StatusMobileMenuBackground.SEM_EXECUCAO
               ? 'flex'
@@ -169,6 +117,63 @@ export const Menu = (props: MenuProps) => {
         }}
         animationStatus={animationStatus}
       />
-    </Box>
+      <Box
+        styleSheet={{
+          width: '100%',
+          height: '100px',
+          display: 'flex',
+
+          flexDirection: { xs: 'row' },
+          alignItems: { xs: 'center', md: '' },
+          alignContent: 'end',
+          justifyContent: { xs: '', md: 'flex-end' },
+        }}
+        tag="header"
+      >
+        <MenuHamburger
+          styleSheet={{
+            position: 'absolute',
+            display: { xs: 'flex', md: 'none' },
+          }}
+          menuIsVisible={
+            animationStatus === StatusMobileMenuBackground.EXPANDIR
+          }
+          handleMenuIsVisible={handleMenuIsVisible}
+        />
+        <Box
+          tag="ul"
+          styleSheet={{
+            width: { xs: 'calc(100vw - 100px)', md: '100%' },
+            height: '100px',
+            display:
+              animationStatus === StatusMobileMenuBackground.EXPANDIR
+                ? 'flex'
+                : { xs: 'none', md: 'flex' },
+            flexDirection: { xs: 'column', md: 'row' },
+            marginTop: { xs: '100px', md: '0px' },
+            gap: '3rem 0rem ',
+            alignItems: { xs: 'center', md: '' },
+            alignContent: 'end',
+            justifyContent: { xs: '', md: 'space-around' },
+          }}
+        >
+          <li>
+            <Text variant="body1">
+              <TextLink>Página inicial</TextLink>
+            </Text>
+          </li>
+          <li>
+            <Text variant="body1">
+              <TextLink>Sobre</TextLink>
+            </Text>
+          </li>
+          <li>
+            <Text variant="body1">
+              <TextLink>Contato</TextLink>
+            </Text>
+          </li>
+        </Box>
+      </Box>
+    </>
   );
 };

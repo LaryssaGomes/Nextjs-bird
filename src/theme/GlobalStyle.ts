@@ -4,16 +4,17 @@ const GlobalStyle = createGlobalStyle`
   // [NextJS Reset]
   html {
     display: flex;
-    min-height: 100%;
+    min-height: 100vh;
     flex-direction: column;
   }
   body {
     display: flex;
     flex: 1;
     flex-direction: column;   
+    overflow-x: hidden;
   }
   #__next {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex: 1;
     flex-direction: column;

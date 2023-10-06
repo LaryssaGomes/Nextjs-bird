@@ -11,12 +11,11 @@ export default function BoxSearch() {
     <Box
       styleSheet={{
         background: theme.colors.primary.x200,
-        height: '60px',
-        width: '100%',
+        padding: { xs: '0.6rem 1.2rem', md: '1rem 2rem' },
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         borderRadius: '10px',
         transform: 'skew(-20deg)',
       }}
@@ -24,10 +23,9 @@ export default function BoxSearch() {
       <InputBase
         placeholder="Tucanos, Arara ..."
         styleSheet={{
-          height: '1.5rem',
           color: '#fff',
           fontWeight: '700',
-          fontSize: '18px',
+          fontSize: { xs: '14px', md: '16px', lg: '18px' },
           transform: 'skew(20deg)',
         }}
       />
@@ -37,8 +35,7 @@ export default function BoxSearch() {
           alignSelf: 'center',
           justifyContent: 'center',
           background: '#fff',
-          height: '40px',
-          width: '150px',
+          padding: { xs: '0.8rem', md: '1rem' },
           color: '#31754C',
           borderRadius: '5px',
         }}

@@ -4,40 +4,60 @@ import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
 import { BackgroundList } from './patterns/BackgroundList/BackgroundList';
 
-export default function HomeScreen() {
-  return (
-    <>
-      <Box
-        styleSheet={{
-          overflow: 'auto',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alingItems: 'center',
-        }}
-      >
-        <Image
+/*
+ <Image
           styleSheet={{
-            position: 'absolute',
-            left: '0',
-            width: { xs: '100px', md: '300px' },
+            width: '300px',
+            maxWidth: '300px',
           }}
-          src="/images/Arara.svg"
+          src="/images/Home.png"
           alt="Arara"
         />
         <Box
           styleSheet={{
-            width: '45%',
-            marginLeft: '4rem',
-            justifyContent: 'center',
-            marginTop: '4rem',
-            marginBottom: '4rem',
+            maxWidth: { xs: '100%', md: '60%', lg: '50%' },
           }}
         >
           <Text
             variant="title1"
             styleSheet={{
-              marginBottom: '4rem',
+              marginBottom: { xs: '2.5rem', md: '4rem' },
+              textAlign: 'justify',
+            }}
+          >
+            Vamos aprender mais sobre aves hoje
+          </Text>
+          <BoxSearch />
+        </Box>*/
+export default function HomeScreen() {
+  return (
+    <>
+      <Box
+        styleSheet={{
+          flexDirection: { xs: 'column-reverse', md: 'row' },
+          justifyContent: { xs: 'center', md: 'space-around' },
+          alignItems: 'center',
+        }}
+      >
+        <Image
+          styleSheet={{
+            width: { xs: '50%', md: '25%' },
+            marginTop: { xs: '2rem', md: '' },
+            maxWidth: '300px',
+          }}
+          src="/images/Home.png"
+          alt="Arara"
+        />
+        <Box
+          styleSheet={{
+            maxWidth: { xs: '100%', md: '60%', lg: '50%' },
+          }}
+        >
+          <Text
+            variant="title1"
+            styleSheet={{
+              marginBottom: { xs: '2.5rem', md: '4rem' },
+              textAlign: 'justify',
             }}
           >
             Vamos aprender mais sobre aves hoje

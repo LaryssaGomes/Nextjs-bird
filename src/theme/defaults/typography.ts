@@ -6,7 +6,8 @@ export const typography = {
         xs: '700',
       },
       fontSize: {
-        xs: '48px',
+        md: '48px',
+        xs: '36px',
       },
     },
     title2: {
@@ -31,7 +32,8 @@ export const typography = {
         xs: '700',
       },
       fontSize: {
-        xs: '16px',
+        xs: '12px',
+        md: '16px'
       },
     },
   }
