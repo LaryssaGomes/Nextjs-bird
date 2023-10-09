@@ -6,8 +6,10 @@ export const typography = {
         xs: '700',
       },
       fontSize: {
-        md: '48px',
+        lg: '48px',
+        md: '36px',
         xs: '36px',
+
       },
     },
     title2: {

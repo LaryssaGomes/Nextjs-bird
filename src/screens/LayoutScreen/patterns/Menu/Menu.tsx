@@ -98,12 +98,6 @@ export const Menu = (props: MenuProps) => {
 
   const theme = useTheme();
 
-  const [isHovered, setIsHovered] = useState(false);
-  const swingAnimation = useSpring({
-    width: '100%',
-    from: { width: '0%' },
-    config: { duration: 250 },
-  });
   return (
     <>
       <BackgroundMobile

@@ -44,11 +44,17 @@ export const Background = ({ children }: BackgroundProps) => {
       />
       <Box
         styleSheet={{
-          maxWidth: '1980px',
+          alignItems: 'center',
           width: '100%',
         }}
       >
-        {children}
+        <Box
+          styleSheet={{
+            maxWidth: '1280px',
+          }}
+        >
+          {children}
+        </Box>
       </Box>
     </Box>
   );
