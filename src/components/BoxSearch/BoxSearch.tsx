@@ -27,6 +27,7 @@ export default function BoxSearch() {
           fontWeight: '700',
           fontSize: { xs: '14px', md: '16px', lg: '18px' },
           transform: 'skew(20deg)',
+          width: '50%',
         }}
       />
 
