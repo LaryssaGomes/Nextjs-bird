@@ -9,7 +9,7 @@ export const BackgroundList = () => {
   const theme = useTheme();
   return (
     <>
-      <Box>
+      <Box styleSheet={{ marginBottom: '-1px' }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100vw"
@@ -25,13 +25,20 @@ export const BackgroundList = () => {
         styleSheet={{
           backgroundColor: '#AAD1BA',
           flexDirection: 'row',
-          gap: '2rem',
+          gap: { xs: '2rem 1rem', md: '2rem' },
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          padding: '2rem',
         }}
       >
         <Item />
         <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
       </Box>
-      <Box>
+      <Box styleSheet={{ transform: 'rotate(180deg)', marginTop: '-1px' }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100vw"

@@ -8,7 +8,7 @@ export const typography = {
       fontSize: {
         lg: '48px',
         md: '36px',
-        xs: '36px',
+        xs: '28px',
 
       },
     },
@@ -17,8 +17,18 @@ export const typography = {
         xs: '700',
       },
       fontSize: {
-        xs: '16px',
-        md: '24px'
+        xs: '12px',
+        md: '16px'
+      },
+    },
+    title3: {
+      fontWeight: {
+        xs: '750',
+        md: '700',
+      },
+      fontSize: {
+        xs: '12px',
+        md: '16px'
       },
     },
     body2: {
@@ -26,7 +36,7 @@ export const typography = {
         xs: '400',
       },
       fontSize: {
-        xs: '16px',
+        xs: '14px',
       },
     },
     body1: {

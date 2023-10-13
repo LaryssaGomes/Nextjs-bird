@@ -26,7 +26,7 @@ const animeteExpandBorderBottom = keyframes`
 
 const TextLink = styled(animated.a)`
   position: 'relative';
-  z-index: 4;
+  z-index: 5;
   cursor: pointer;
   display: inline-block;
   &:after {
@@ -57,11 +57,12 @@ interface BackgroundMobileProps {
   styleSheet: StyleSheet;
 }
 const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 4;
   background-color: #31754c;
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
   ${({ animationStatus }) => {

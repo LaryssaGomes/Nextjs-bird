@@ -1,3 +1,5 @@
+import { ContainerGaleria } from './patterns/ContainerGaleria/ContainerGaleria';
+
 export default function GaleriaScreen() {
-  return <div>Galeria</div>;
+  return <ContainerGaleria />;
 }

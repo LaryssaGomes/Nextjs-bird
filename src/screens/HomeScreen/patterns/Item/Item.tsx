@@ -11,17 +11,19 @@ export const Item = () => {
     <Box
       styleSheet={{
         backgroundColor: '#ECFFF4',
-        padding: '1rem 1rem 1rem 1rem',
+        padding: { xs: '1rem', md: '1rem 1.5rem 1rem 1rem' },
         borderRadius: '20px',
-        flexDirection: 'row',
-        width: '30%',
+        flexDirection: { xs: 'column', md: 'row' },
+        flexgrow: 1,
+        alignItems: { xs: 'center', md: '' },
       }}
     >
       <Image
         styleSheet={{
-          width: { xs: '50%', md: '30%', lg: '200px' },
-          height: '200px',
-          borderRadius: '36px',
+          marginTop: { xs: '-2rem', md: '0px' },
+          width: { xs: '100px', md: '130px', lg: '150px' },
+          height: { xs: '100px', md: '170px', lg: '200px' },
+          borderRadius: '25px',
           objectFit: 'cover',
         }}
         src="/images/aves.png"
@@ -30,16 +32,17 @@ export const Item = () => {
 
       <Box
         styleSheet={{
-          width: '55%',
-          marginLeft: '2rem',
+          marginLeft: { xs: '', md: '1.5rem' },
           justifyContent: 'space-between',
         }}
       >
         <Box>
           <Text
-            variant="body1"
+            variant="title3"
             styleSheet={{
+              marginTop: { xs: '1rem', md: '0px' },
               marginBottom: '1rem',
+              textAlign: { xs: 'center', md: 'start' },
             }}
           >
             Arara
@@ -47,33 +50,43 @@ export const Item = () => {
           <Text
             styleSheet={{
               marginBottom: '1rem',
+              maxWidth: { xs: '150px', md: '140px', lg: '200px' },
+              height: { xs: '80px', md: '80px', lg: '100px' },
+              width: '100%',
+              overflow: 'hidden',
+              textAlign: 'justify',
+              textOverflow: 'ellipsis',
             }}
           >
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. The point
-            of using Lorem Ips...
+            of using Lorem Ips It is a long established fact that a reader will
+            be distracted by the readable content of a page when looking at its
+            layout. The point of using Lorem Ips It is a long established fact
+            that a reader will be distracted by the readable content of a page
+            when looking at its layout. The point of using Lorem Ips...
           </Text>
         </Box>
 
         <ButtonBase
           styleSheet={{
-            alignSelf: 'center',
             justifyContent: 'center',
             background: '#31754C',
-            padding: { xs: '0.8rem', md: '1rem' },
-            transform: 'skew(20deg)',
+            padding: { xs: '0.4rem', md: '0.8rem', lg: '1rem' },
+            transform: 'skew(-20deg)',
             borderRadius: '5px',
           }}
         >
           <Text
             styleSheet={{
               color: '#fff',
-              transform: 'skew(-20deg)',
+              transform: 'skew(20deg)',
               textAlign: 'center',
               fontWeight: '700',
             }}
+            variant="body1"
           >
-            + ENCONTRAR
+            VER +
           </Text>
         </ButtonBase>
       </Box>

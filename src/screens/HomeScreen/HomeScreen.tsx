@@ -18,7 +18,7 @@ export default function HomeScreen() {
           styleSheet={{
             width: { xs: '50%', md: '30%', lg: '30%' },
             marginTop: { xs: '2rem', md: '' },
-            marginBottom: { xs: '-1rem', md: '-2rem', lg: '-3rem' },
+            marginBottom: { xs: '-1rem', md: '-2rem', lg: '-3.8rem' },
             alignItems: 'flex-end',
             maxWidth: '350px',
           }}
@@ -27,7 +27,7 @@ export default function HomeScreen() {
         />
         <Box
           styleSheet={{
-            maxWidth: { xs: '65%', md: '50%', lg: '50%' },
+            maxWidth: { xs: '80%', md: '50%', lg: '50%' },
           }}
         >
           <Text
