@@ -2,13 +2,48 @@ import React from 'react';
 import Box from '../Box/Box';
 import { useTheme } from 'styled-components';
 
-export default function Grid({ children }) {
+interface GridProps {
+  columns: number;
+  spacing: string;
+  justifyContent:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'start'
+    | 'end'
+    | 'left'
+    | 'right';
+  alignItems: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  children?: React.ReactNode;
+  styleSheet?: StyleSheet;
+}
+
+export default function Grid({
+  children,
+  columns,
+  spacing,
+  justifyContent,
+  alignItems,
+  styleSheet,
+}: GridProps) {
   const theme = useTheme();
+
+  const gridStyle = {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${columns || 2}, 1fr)`,
+    gap: spacing || '16px',
+    justifyContent: justifyContent || 'start',
+    alignItems: alignItems || 'start',
+  };
+
   return (
     <Box
       styleSheet={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 4fr)',
+        ...gridStyle,
+        ...styleSheet,
       }}
     >
       {children}
@@ -16,7 +51,29 @@ export default function Grid({ children }) {
   );
 }
 
-Grid.Item = ({ children }) => {
+interface GridItemProps {
+  colSpan: number;
+  rowSpan: number;
+  children?: React.ReactNode;
+  styleSheet?: StyleSheet;
+}
+
+Grid.Item = ({ children, colSpan, rowSpan, styleSheet }: GridItemProps) => {
   const theme = useTheme();
-  return <Box>{children}</Box>;
+
+  const itemStyle = {
+    gridColumn: colSpan && `span ${colSpan}`,
+    gridRow: rowSpan && `span ${rowSpan}`,
+  };
+
+  return (
+    <Box
+      styleSheet={{
+        ...itemStyle,
+        ...styleSheet,
+      }}
+    >
+      {children}
+    </Box>
+  );
 };
