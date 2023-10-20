@@ -5,7 +5,7 @@ import Text from '../Text/Text';
 import InputBase from '../Input/InputBase';
 import ButtonBase from '../Button/ButtonBase';
 
-export default function BoxSearch() {
+const BoxSearch = ({ onFiltroChange }) => {
   const theme = useTheme();
   return (
     <Box
@@ -22,6 +22,7 @@ export default function BoxSearch() {
     >
       <InputBase
         placeholder="Tucanos, Arara ..."
+        onChange={handleInputChange}
         styleSheet={{
           color: '#fff',
           fontWeight: '700',
@@ -54,4 +55,6 @@ export default function BoxSearch() {
       </ButtonBase>
     </Box>
   );
-}
+};
+
+export default BoxSearch;

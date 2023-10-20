@@ -3,8 +3,23 @@ import BoxSearch from '@src/components/BoxSearch/BoxSearch';
 import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
 import { BackgroundList } from './patterns/BackgroundList/BackgroundList';
+import { collection, getDocs, onSnapshot, query } from 'firebase/firestore';
+import { db } from 'services/firebase';
 
 export default function HomeScreen() {
+  const citiesRef = collection(db, 'aves');
+
+  getDocs(citiesRef)
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log('ID do documento:', doc.id);
+        console.log('Dados do documento:', doc.data());
+      });
+    })
+    .catch((error) => {
+      console.error('Erro ao buscar documentos:', error);
+    });
+
   return (
     <>
       <Box
@@ -39,7 +54,7 @@ export default function HomeScreen() {
           >
             Vamos aprender mais sobre aves hoje
           </Text>
-          <BoxSearch />
+          <BoxSearch response={'ff'} />
         </Box>
       </Box>
       <Box
