@@ -1,11 +1,25 @@
 import styled, { useTheme } from 'styled-components';
 import Box from '../Box/Box';
-import Button from '../Button/Button';
 import Text from '../Text/Text';
 import InputBase from '../Input/InputBase';
 import ButtonBase from '../Button/ButtonBase';
+import { useDebounce } from 'use-debounce';
+import { useEffect, useState } from 'react';
 
-const BoxSearch = ({ onFiltroChange }) => {
+interface BoxSearchProps {
+  onFiltroChange: (value: string) => void;
+}
+
+const BoxSearch = ({ onFiltroChange }: BoxSearchProps) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+  const handleInput = () => {
+    onFiltroChange(inputValue);
+  };
+
   const theme = useTheme();
   return (
     <Box
@@ -22,7 +36,6 @@ const BoxSearch = ({ onFiltroChange }) => {
     >
       <InputBase
         placeholder="Tucanos, Arara ..."
-        onChange={handleInputChange}
         styleSheet={{
           color: '#fff',
           fontWeight: '700',
@@ -30,9 +43,11 @@ const BoxSearch = ({ onFiltroChange }) => {
           transform: 'skew(20deg)',
           width: '50%',
         }}
+        onChange={handleInputChange}
       />
 
       <ButtonBase
+        onClick={handleInput}
         styleSheet={{
           alignSelf: 'center',
           justifyContent: 'center',

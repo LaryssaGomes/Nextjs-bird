@@ -1,12 +1,26 @@
 import Box from '@src/components/Box/Box';
 import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
-import { useTheme } from '@src/theme/ThemeProvider';
-import { ReactNode } from 'react';
-import { StyleSheet } from '@src/theme/StyleSheet';
 import ButtonBase from '@src/components/Button/ButtonBase';
 
-export const Item = () => {
+const formatNome = (name: string) => {
+  name = name.normalize('NFD').replaceAll('-', ' ');
+  return name;
+};
+
+interface ProductCardProps {
+  dados: {
+    dadosIniciais: string;
+    img: {
+      img: string;
+      alt: string;
+    };
+    nomeDeBusca: string;
+    nomeUnico: string;
+  };
+}
+
+export const ProductCard = ({ dados }: ProductCardProps) => {
   return (
     <Box
       styleSheet={{
@@ -26,8 +40,8 @@ export const Item = () => {
           borderRadius: '25px',
           objectFit: 'cover',
         }}
-        src="/images/aves.png"
-        alt="Arara"
+        src={dados.img.img}
+        alt={dados.img.alt}
       />
 
       <Box
@@ -45,26 +59,20 @@ export const Item = () => {
               textAlign: { xs: 'center', md: 'start' },
             }}
           >
-            Arara
+            {formatNome(dados.nomeUnico)}
           </Text>
           <Text
             styleSheet={{
               marginBottom: '1rem',
               maxWidth: { xs: '150px', md: '140px', lg: '200px' },
-              height: { xs: '80px', md: '80px', lg: '100px' },
+              maxHeight: { xs: '80px', md: '80px', lg: '100px' },
               width: '100%',
               overflow: 'hidden',
-              textAlign: 'justify',
+              whiteSpace: 'break-spaces',
               textOverflow: 'ellipsis',
             }}
           >
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ips It is a long established fact that a reader will
-            be distracted by the readable content of a page when looking at its
-            layout. The point of using Lorem Ips It is a long established fact
-            that a reader will be distracted by the readable content of a page
-            when looking at its layout. The point of using Lorem Ips...
+            {dados.dadosIniciais}
           </Text>
         </Box>
 

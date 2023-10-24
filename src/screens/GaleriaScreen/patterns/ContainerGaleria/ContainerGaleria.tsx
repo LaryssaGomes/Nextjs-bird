@@ -29,7 +29,6 @@ export const ContainerGaleria = () => {
         >
           Encontre lindas fotos da sua ave favorita
         </Text>
-        <BoxSearch />
       </Box>
     </Box>
   );

@@ -2,23 +2,28 @@ import Box from '@src/components/Box/Box';
 import BoxSearch from '@src/components/BoxSearch/BoxSearch';
 import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
-import { BackgroundList } from './patterns/BackgroundList/BackgroundList';
-import { collection, getDocs, onSnapshot, query } from 'firebase/firestore';
-import { db } from 'services/firebase';
+import { BackgroundContainer } from './patterns/BackgroundContainer/BackgroundContainer';
+import { useQuery } from 'react-query';
+import { getNameAves } from 'services/searchNameAves';
+import { useState } from 'react';
+import { ProductCard } from './patterns/ProductCard/ProductCard';
+import { BirdNotFound } from './patterns/BirdNotFound/BirdNotFound';
 
 export default function HomeScreen() {
-  const citiesRef = collection(db, 'aves');
+  const [search, setSearch] = useState('');
+  const {
+    data: avesData,
+    error,
+    isLoading,
+  } = useQuery(['aves', search], () => getNameAves(search), {
+    enabled: !!search,
+  });
 
-  getDocs(citiesRef)
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log('ID do documento:', doc.id);
-        console.log('Dados do documento:', doc.data());
-      });
-    })
-    .catch((error) => {
-      console.error('Erro ao buscar documentos:', error);
-    });
+  const handleSearch = (value: string) => {
+    console.log('handleSearch');
+    console.log(value);
+    setSearch(value);
+  };
 
   return (
     <>
@@ -54,7 +59,7 @@ export default function HomeScreen() {
           >
             Vamos aprender mais sobre aves hoje
           </Text>
-          <BoxSearch response={'ff'} />
+          <BoxSearch onFiltroChange={handleSearch} />
         </Box>
       </Box>
       <Box
@@ -63,7 +68,15 @@ export default function HomeScreen() {
           alignItems: 'center',
         }}
       >
-        <BackgroundList />
+        <BackgroundContainer>
+          {error && <p>error</p>}
+          {isLoading && <p>Carregamento</p>}
+          {avesData?.length == 0 ? (
+            <BirdNotFound />
+          ) : (
+            avesData?.map((item) => <ProductCard dados={item} />)
+          )}
+        </BackgroundContainer>
       </Box>
     </>
   );

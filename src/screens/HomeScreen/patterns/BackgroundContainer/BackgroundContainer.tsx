@@ -1,9 +1,11 @@
 import Box from '@src/components/Box/Box';
-import Image from '@src/components/Image/Image';
 import { useTheme } from '@src/theme/ThemeProvider';
-import { Item } from '../Item/Item';
+import { ReactNode } from 'react';
 
-export const BackgroundList = () => {
+interface BackgroundContainerProps {
+  children: ReactNode;
+}
+export const BackgroundContainer = ({ children }: BackgroundContainerProps) => {
   const theme = useTheme();
   return (
     <>
@@ -19,22 +21,20 @@ export const BackgroundList = () => {
           />
         </svg>
       </Box>
+
       <Box
         styleSheet={{
           backgroundColor: '#AAD1BA',
           flexDirection: 'row',
+          width: '100vw',
+          minHeight: '200px',
           gap: { xs: '2rem 1rem', md: '2rem' },
           flexWrap: 'wrap',
           justifyContent: 'center',
           padding: '2rem',
         }}
       >
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        {children}
       </Box>
       <Box styleSheet={{ transform: 'rotate(180deg)', marginTop: '-1px' }}>
         <svg
