@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 import { getNameAves } from 'services/searchNameAves';
 import { useState } from 'react';
 import { ProductCard } from './patterns/ProductCard/ProductCard';
-import { BirdNotFound } from './patterns/BirdNotFound/BirdNotFound';
+import { BirdNotFound } from '../../components/BirdNotFound/BirdNotFound';
 
 export default function HomeScreen() {
   const [search, setSearch] = useState('');
@@ -15,13 +15,9 @@ export default function HomeScreen() {
     data: avesData,
     error,
     isLoading,
-  } = useQuery(['aves', search], () => getNameAves(search), {
-    enabled: !!search,
-  });
+  } = useQuery(['aves', search], () => getNameAves(search));
 
   const handleSearch = (value: string) => {
-    console.log('handleSearch');
-    console.log(value);
     setSearch(value);
   };
 
@@ -69,10 +65,13 @@ export default function HomeScreen() {
         }}
       >
         <BackgroundContainer>
-          {error && <p>error</p>}
-          {isLoading && <p>Carregamento</p>}
+          {isLoading && <div>skeleton</div>}
           {avesData?.length == 0 ? (
-            <BirdNotFound />
+            <BirdNotFound>
+              Ops! Não consegui encontrar seu pássaro na minha investigação,
+              parece que ele está em migração. <br />
+              Tente outra ave, darei o meu melhor para encontrar.
+            </BirdNotFound>
           ) : (
             avesData?.map((item) => <ProductCard dados={item} />)
           )}

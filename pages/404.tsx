@@ -39,7 +39,7 @@ export default function Pagina404() {
           >
             4
           </Text>
-          
+          <Image
             styleSheet={{
               maxWidth: { xs: '150px', md: '300px', lg: '350px' },
             }}

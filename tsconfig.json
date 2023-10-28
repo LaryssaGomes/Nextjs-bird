@@ -18,13 +18,18 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"]
-    }
+      "@src/*": [
+        "./src/*"
+      ]
+    },
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"  ],
+    "**/*.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -3,11 +3,7 @@ import { useTheme } from '@src/theme/ThemeProvider';
 import Text from '@src/components/Text/Text';
 import BoxSearch from '@src/components/BoxSearch/BoxSearch';
 import Grid from '@src/components/Grid/Grid';
-//PESQUISA
-/*
-AVE https://api.gbif.org/v1/species?name=Arara
-imagem da AVE https://api.gbif.org/v1/occurrence/search?scientificName=Ara+macao
-*/
+
 export const ContainerFotos = () => {
   const theme = useTheme();
   return (
