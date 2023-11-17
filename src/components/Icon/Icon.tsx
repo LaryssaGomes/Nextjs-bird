@@ -1,7 +1,7 @@
-import { BaseComponent } from "@src/theme/BaseComponent";
-import { StyleSheet } from "@src/theme/StyleSheet";
+import { BaseComponent } from '@src/theme/BaseComponent';
+import { StyleSheet } from '@src/theme/StyleSheet';
 import * as icons from './svgs/_index';
-import { colors } from "@src/theme/defaults/colors";
+import { colors } from '@src/theme/defaults/colors';
 
 const iconSizes = {
   xs: '12px',
@@ -15,11 +15,16 @@ interface IconProps {
   name: keyof typeof icons;
   styleSheet?: StyleSheet;
   size?: keyof typeof iconSizes;
-  color?: keyof typeof colors ;
+  color?: keyof typeof colors;
 }
 export default function Icon({ size, name, color }: IconProps) {
   const CurrentIcon = icons[name];
-  if(!CurrentIcon) return <>"${name}" is not a valid <Icon /></>;
+  if (!CurrentIcon)
+    return (
+      <>
+        "${name}" is not a valid <Icon />
+      </>
+    );
   return (
     // <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <BaseComponent
@@ -36,11 +41,11 @@ export default function Icon({ size, name, color }: IconProps) {
     >
       <CurrentIcon />
     </BaseComponent>
-  )
+  );
 }
 
 Icon.defaultProps = {
   name: 'default_icon',
   size: 'md',
-  color: 'primary'
-}
+  color: 'primary',
+};

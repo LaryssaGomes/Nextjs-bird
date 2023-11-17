@@ -73,7 +73,13 @@ export default function HomeScreen() {
               Tente outra ave, darei o meu melhor para encontrar.
             </BirdNotFound>
           ) : (
-            avesData?.map((item) => <ProductCard dados={item} />)
+            avesData?.map((item) => (
+              <ProductCard
+                nomeUnico={item.nomeunico}
+                introducao={item.introducao}
+                img={item.img}
+              />
+            ))
           )}
         </BackgroundContainer>
       </Box>

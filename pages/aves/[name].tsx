@@ -1,1 +1,5 @@
-export { default } from '@src/screens/BirdInformationScreen/BirdInformationScreen';
+export {
+  default,
+  getStaticPaths,
+  getStaticProps,
+} from '@src/screens/BirdInformationScreen/BirdInformationScreen';

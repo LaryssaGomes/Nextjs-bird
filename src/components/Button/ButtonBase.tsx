@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
-import { useRipple } from 'react-use-ripple';
-import { ThemeTypographyVariants } from "@src/theme/theme";
-import Text from "../Text/Text";
-import { StyleSheet } from "@src/theme/StyleSheet";
-import { useRouter } from "next/router";
-import { BaseComponent } from "@src/theme/BaseComponent";
+import { ThemeTypographyVariants } from '@src/theme/theme';
+import Text from '../Text/Text';
+import { StyleSheet } from '@src/theme/StyleSheet';
+import { useRouter } from 'next/router';
+import { BaseComponent } from '@src/theme/BaseComponent';
 
 export interface ButtonBaseProps {
   href?: string;
@@ -14,8 +13,7 @@ export interface ButtonBaseProps {
   styleSheet?: StyleSheet;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const StyledButton = styled(Text)<any>`
-`;
+const StyledButton = styled(Text)<any>``;
 export default function ButtonBase({
   children,
   textVariant,
@@ -28,14 +26,7 @@ export default function ButtonBase({
   const isLink = Boolean(href);
   const Tag = isLink ? 'a' : 'button';
 
-  
-  useRipple(ref, {
-    animationLength: 600,
-    rippleColor: 'rgba(255,255,255,0.7)',
-  });
-
-
-  return (  
+  return (
     <BaseComponent
       ref={ref}
       tag={Tag}
@@ -47,7 +38,7 @@ export default function ButtonBase({
         outline: '0',
         cursor: 'pointer',
         textDecoration: 'none',
-        ...styleSheet
+        ...styleSheet,
       }}
       onClick={(event) => {
         isLink && event.preventDefault();
@@ -56,8 +47,7 @@ export default function ButtonBase({
       }}
       {...props}
     >
-{children}
-      
+      {children}
     </BaseComponent>
   );
 }

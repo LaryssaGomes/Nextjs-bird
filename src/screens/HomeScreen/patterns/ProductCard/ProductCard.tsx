@@ -2,6 +2,7 @@ import Box from '@src/components/Box/Box';
 import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
 import ButtonBase from '@src/components/Button/ButtonBase';
+import Link from '@src/components/Link/Link';
 
 const formatNome = (name: string) => {
   name = name.normalize('NFD').replaceAll('-', ' ');
@@ -9,18 +10,19 @@ const formatNome = (name: string) => {
 };
 
 interface ProductCardProps {
-  dados: {
-    dadosIniciais: string;
-    img: {
-      img: string;
-      alt: string;
-    };
-    nomeDeBusca: string;
-    nomeUnico: string;
+  introducao: string;
+  img: {
+    img: string;
+    alt?: string;
   };
+  nomeUnico: string;
 }
 
-export const ProductCard = ({ dados }: ProductCardProps) => {
+export const ProductCard = ({
+  introducao,
+  img,
+  nomeUnico,
+}: ProductCardProps) => {
   return (
     <Box
       styleSheet={{
@@ -40,8 +42,8 @@ export const ProductCard = ({ dados }: ProductCardProps) => {
           borderRadius: '25px',
           objectFit: 'cover',
         }}
-        src={dados.img.img}
-        alt={dados.img.alt}
+        src={img.img}
+        alt={img?.alt}
       />
 
       <Box
@@ -59,7 +61,7 @@ export const ProductCard = ({ dados }: ProductCardProps) => {
               textAlign: { xs: 'center', md: 'start' },
             }}
           >
-            {formatNome(dados.nomeUnico)}
+            {formatNome(nomeUnico)}
           </Text>
           <Text
             styleSheet={{
@@ -72,11 +74,11 @@ export const ProductCard = ({ dados }: ProductCardProps) => {
               textOverflow: 'ellipsis',
             }}
           >
-            {dados.dadosIniciais}
+            {introducao}
           </Text>
         </Box>
-
-        <ButtonBase
+        <Link
+          href={`aves/${nomeUnico}`}
           styleSheet={{
             justifyContent: 'center',
             background: '#31754C',
@@ -96,7 +98,7 @@ export const ProductCard = ({ dados }: ProductCardProps) => {
           >
             VER +
           </Text>
-        </ButtonBase>
+        </Link>
       </Box>
     </Box>
   );
