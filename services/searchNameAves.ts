@@ -59,54 +59,61 @@ export const getNameAves = async (name?: string) =>
 
 export const getInformacoesAdcionaisAve = async (name: string) =>
 {
-    try
-    {
 
-        const queryBird = `
-        query {
+    const queryBird = `query {
             allBirds(
-            filter: {
-                nomeunico: {
-                matches: { pattern: "${name}" }
-                }
-            }
-            ) {
-            id,
-            nomeunico,
-            introducao,
-            img
-            }
-        }
-        `;
-
-        const contentResponseBird = await requestPost(queryBird);
-
-        const idBird = contentResponseBird.data.allBirds[0].id;
-
-        const queryArticle = `query{
-            allArticles(
                 filter: {
-                fkBird: {
-                    eq: ${idBird}
-                }
+                    nomeunico: {
+                        matches: { pattern: "${name}", caseSensitive: false }
+                    }
                 }
             ) {
-                id
-                dados,
-                referencias
+                id,
+                nomeunico,
+                introducao,
+                img
             }
         }`;
 
-        const contentResponseArticle = await requestPost(queryArticle);
-        return {
-            ...contentResponseArticle.data.allArticles[0],
-            ...contentResponseBird.data.allBirds[0]
-        };
+    const contentResponseBird = await requestPost(queryBird);
 
 
+    const idBird = contentResponseBird.data.allBirds[0].id;
 
-    } catch (error)
-    {
-        throw new Error('Erro ao buscar documentos: ' + error);
-    }
+    const queryArticle = `query {
+        allArticles(
+            filter: {
+                fkBird: {
+                    eq: "${idBird}"
+                }
+            }
+        ) {
+            id
+            dados,
+            referencias
+        }
+    }`;
+
+    const contentResponseArticle = await requestPost(queryArticle);
+
+    const queryGallerie = `query{
+        allGalleries(
+            filter: {
+            fkBird: {
+                 eq: "${idBird}"
+                }
+            }
+        ){
+            id,
+            imgs
+        }
+   }`;
+    const contentResponseGallerie = await requestPost(queryGallerie);
+
+    return {
+        ...contentResponseArticle.data.allArticles[0],
+        ...contentResponseBird.data.allBirds[0],
+        ...contentResponseGallerie.data.allGalleries[0],
+    };
+
 }

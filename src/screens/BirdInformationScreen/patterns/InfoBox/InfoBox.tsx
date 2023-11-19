@@ -3,19 +3,16 @@ import Grid from '@src/components/Grid/Grid';
 import Icon from '@src/components/Icon/Icon';
 import Link from '@src/components/Link/Link';
 import Text from '@src/components/Text/Text';
+import { ReactNode } from 'react';
 
-interface ContainerDataProps {
-  datas: {
-    blocoDeInformacoes: { titulo: string; dados: any[] }[];
-    dadosIniciais: string;
-    referencia: string[];
-  };
+interface InfoBoxProps {
+  children: ReactNode;
 }
 interface ContainerTitleProps {
   title: string;
 }
 
-const ContainerTitle = ({ title }: ContainerTitleProps) => {
+export const ContainerTitle = ({ title }: ContainerTitleProps) => {
   return (
     <Box
       styleSheet={{
@@ -41,7 +38,7 @@ const ContainerTitle = ({ title }: ContainerTitleProps) => {
   );
 };
 
-export const ContainerData = ({ datas }: ContainerDataProps) => {
+export const InfoBox = ({ children }: InfoBoxProps) => {
   return (
     <>
       <Box styleSheet={{ marginBottom: '-1px', marginTop: '-3rem' }}>
@@ -77,54 +74,7 @@ export const ContainerData = ({ datas }: ContainerDataProps) => {
             color: '#fff',
           }}
         >
-          <ContainerTitle title="Introdução" />
-
-          {datas.dadosIniciais}
-
-          {datas.blocoDeInformacoes.map((item) => (
-            <>
-              <ContainerTitle title={item.titulo} />
-              {item.dados}
-            </>
-          ))}
-          <ContainerTitle title="Referência" />
-          {datas.referencia.map((item) => (
-            <Link href={item} colorVariant="neutral">
-              {item}
-            </Link>
-          ))}
-          <ContainerTitle title="Galeria" />
-          <Grid
-            columns={6}
-            spacing={''}
-            justifyContent={'center'}
-            alignItems={'center'}
-          >
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-            <Grid.Item colSpan={1} rowSpan={2}>
-              Fotos
-            </Grid.Item>
-          </Grid>
+          {children}
         </Box>
       </Box>
 

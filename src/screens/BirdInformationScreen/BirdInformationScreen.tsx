@@ -1,7 +1,13 @@
-import { ContainerData } from '@src/screens/BirdInformationScreen/patterns/ContainerData/ContainerData';
+import Grid from '@src/components/Grid/Grid';
+import Link from '@src/components/Link/Link';
+import {
+  InfoBox,
+  ContainerTitle,
+} from '@src/screens/BirdInformationScreen/patterns/InfoBox/InfoBox';
 import { ContainerMain } from '@src/screens/BirdInformationScreen/patterns/ContainerMain/ContainerMain';
 import { useRouter } from 'next/router';
 import { getInformacoesAdcionaisAve } from 'services/searchNameAves';
+import { Gallery } from './patterns/Gallery/Gallery';
 
 type BirdInformationScreenProps = {
   name: string;
@@ -16,6 +22,7 @@ type BirdInformationScreenProps = {
     img: string;
     alt?: string;
   };
+  imgsGallery: any[];
 };
 
 export async function getStaticPaths() {
@@ -31,9 +38,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const data = await getInformacoesAdcionaisAve(params?.name);
+  console.log(data);
 
   return {
-    props: { ...data, name: params?.name },
+    props: { ...data, name: params?.name, imgsGallery: [data.imgs, data.img] },
   };
 }
 
@@ -44,17 +52,28 @@ export default function BirdInformationScreen({
   dados,
   introducao,
   img,
+  imgsGallery,
 }: BirdInformationScreenProps) {
   return (
     <>
       <ContainerMain img={img.img} nomeUnico={name} alt={img.alt} />
-      <ContainerData
-        datas={{
-          blocoDeInformacoes: dados,
-          dadosIniciais: introducao,
-          referencia: referencias,
-        }}
-      />
+      <InfoBox>
+        <ContainerTitle title="Introdução" />
+        {introducao}
+        {dados.map((item) => (
+          <>
+            <ContainerTitle title={item.titulo} />
+            {item.dados}
+          </>
+        ))}
+        <ContainerTitle title="Referência" />
+        {referencias.map((item) => (
+          <Link href={item} colorVariant="neutral">
+            {item}
+          </Link>
+        ))}
+        <Gallery imgsGallery={imgsGallery} />
+      </InfoBox>
     </>
   );
 }
