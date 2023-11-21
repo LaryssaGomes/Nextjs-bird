@@ -1,10 +1,11 @@
 import React from 'react';
 import Box from '../Box/Box';
 import { useTheme } from 'styled-components';
+import { StyleSheet } from '@src/theme/StyleSheet';
 
 interface GridProps {
   columns: number;
-  spacing: string;
+  spacing?: string;
   justifyContent:
     | 'flex-start'
     | 'flex-end'
@@ -33,7 +34,7 @@ export default function Grid({
 
   const gridStyle = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${columns || 2}, 1fr)`,
+    gridTemplateColumns: `repeat(${columns || 2}, auto)`,
     gap: spacing || '16px',
     justifyContent: justifyContent || 'start',
     alignItems: alignItems || 'start',

@@ -41,7 +41,11 @@ export async function getStaticProps({ params }) {
   console.log(data);
 
   return {
-    props: { ...data, name: params?.name, imgsGallery: [data.imgs, data.img] },
+    props: {
+      ...data,
+      name: params?.name,
+      imgsGallery: [...data.imgs],
+    },
   };
 }
 
@@ -66,13 +70,13 @@ export default function BirdInformationScreen({
             {item.dados}
           </>
         ))}
+        <Gallery imgsGallery={imgsGallery} />
         <ContainerTitle title="Referência" />
         {referencias.map((item) => (
           <Link href={item} colorVariant="neutral">
             {item}
           </Link>
         ))}
-        <Gallery imgsGallery={imgsGallery} />
       </InfoBox>
     </>
   );
