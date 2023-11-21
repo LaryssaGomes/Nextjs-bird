@@ -4,7 +4,7 @@ import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
 import { BackgroundContainer } from './patterns/BackgroundContainer/BackgroundContainer';
 import { useQuery } from 'react-query';
-import { getNameAves } from 'services/searchNameAves';
+import { getNameAves } from 'services/datoCMS';
 import { useState } from 'react';
 import { ProductCard } from './patterns/ProductCard/ProductCard';
 import { BirdNotFound } from '../../components/BirdNotFound/BirdNotFound';

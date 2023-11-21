@@ -1,4 +1,5 @@
 import Grid from '@src/components/Grid/Grid';
+import { MdInsertLink } from 'react-icons/md';
 import Text from '@src/components/Text/Text';
 import { ContainerTitle } from '../InfoBox/InfoBox';
 import Image from '@src/components/Image/Image';
@@ -56,17 +57,32 @@ export const Gallery = ({ imgsGallery }: GalleryProps) => {
                 background: '#31754C',
                 padding: '0.5rem',
                 marginLeft: '1rem',
-                maxWidth: '200px',
+                maxWidth: '220px',
                 borderRadius: '15px',
               }}
             >
               <Text
                 styleSheet={{
                   color: '#fff',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '0.5rem',
                 }}
               >
                 Fotografo:
-                <Link href="">{item.authorName}</Link>
+                <Link href={item.authorLink} colorVariant="neutral">
+                  <Box
+                    styleSheet={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alingItems: 'center',
+                      gap: '0.5rem',
+                    }}
+                  >
+                    <MdInsertLink />
+                    {item.authorName}
+                  </Box>
+                </Link>
               </Text>
             </Box>
           </CardBox>

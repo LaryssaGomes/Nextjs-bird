@@ -7,7 +7,7 @@ export const requestPost = async (query) =>
             method: "POST",
             headers: {
                 "Content-type": "application/json",
-                Authorization: "Bearer  a27842e34b97964389a439e32b0cb9",
+                Authorization: `Bearer ${process.env.apiToken}`,
             },
             body: JSON.stringify({
                 query,

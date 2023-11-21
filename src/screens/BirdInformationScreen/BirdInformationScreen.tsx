@@ -6,12 +6,14 @@ import {
 } from '@src/screens/BirdInformationScreen/patterns/InfoBox/InfoBox';
 import { ContainerMain } from '@src/screens/BirdInformationScreen/patterns/ContainerMain/ContainerMain';
 import { useRouter } from 'next/router';
-import { getInformacoesAdcionaisAve } from 'services/searchNameAves';
+import { getInformacoesAdcionaisAve } from 'services/datoCMS';
 import { Gallery } from './patterns/Gallery/Gallery';
+import { MdInsertLink } from 'react-icons/md';
+import Box from '@src/components/Box/Box';
 
 type BirdInformationScreenProps = {
   name: string;
-  referencias?: string[];
+  referencias?: any[];
   aveId: string;
   introducao: string;
   dados: {
@@ -45,6 +47,10 @@ export async function getStaticProps({ params }) {
       ...data,
       name: params?.name,
       imgsGallery: [...data.imgs],
+      referencias: [
+        { link: data.referencias[0], name: 'Wikipidia' },
+        { link: data.referencias[1], name: 'Wikiaves' },
+      ],
     },
   };
 }
@@ -73,8 +79,17 @@ export default function BirdInformationScreen({
         <Gallery imgsGallery={imgsGallery} />
         <ContainerTitle title="Referência" />
         {referencias.map((item) => (
-          <Link href={item} colorVariant="neutral">
-            {item}
+          <Link href={item.link} colorVariant="neutral">
+            <Box
+              styleSheet={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '0.5rem',
+              }}
+            >
+              <MdInsertLink size={16} />
+              {item.name}
+            </Box>
           </Link>
         ))}
       </InfoBox>
