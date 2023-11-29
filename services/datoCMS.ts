@@ -27,7 +27,17 @@ export const requestPost = async (query) =>
     }
 }
 
-export const getNameAves = async (name?: string) =>
+interface BirdInfo
+{
+    id: string;
+    nomeunico: string;
+    introducao: string;
+    img: {
+        img: string;
+        alt: string;
+    };
+}
+export const getNameAves = async (name?: string): Promise<BirdInfo[]> =>
 {
 
     const query = name ? `query{
@@ -54,10 +64,24 @@ export const getNameAves = async (name?: string) =>
     }`;
     const responde = await requestPost(query);
 
-    return responde.data.allBirds;
+    return responde.data.allBirds as BirdInfo[];
 }
+type BirdInfoAdd = {
+    id: string;
+    dados: { titulo: string; dados: any[] }[];
+    referencias: string[];
+    nomeunico: string;
+    introducao: string;
+    img: { img: string; alt: string };
+    imgs?: {
+        authorName: string;
+        authorLink: string;
+        altText: string;
+        imageUrl: string;
+    }[];
+};
 
-export const getInformacoesAdcionaisAve = async (name: string) =>
+export const getInformacoesAdcionaisAve = async (name: string): Promise<BirdInfoAdd[]> =>
 {
 
     const queryBird = `query {
@@ -110,10 +134,84 @@ export const getInformacoesAdcionaisAve = async (name: string) =>
    }`;
     const contentResponseGallerie = await requestPost(queryGallerie);
 
+
     return {
         ...contentResponseArticle.data.allArticles[0],
         ...contentResponseBird.data.allBirds[0],
         ...contentResponseGallerie.data.allGalleries[0],
-    };
+    } as BirdInfoAdd[];
 
+}
+
+type BirdImage = {
+    id: string;
+    imgs: BirdImageDetail[];
+};
+
+type BirdImageDetail = {
+    authorName: string;
+    authorLink: string;
+    altText: string;
+    imageUrl: string;
+};
+
+export const getNameGaleria = async (name?: string): Promise<BirdImage[]> =>
+{
+    let birds;
+    if (name)
+    {
+        const queryBird = `query {
+            allBirds(
+                filter: {
+                    nomeunico: {
+                        matches: { pattern: "${name}", caseSensitive: false }
+                    }
+                }
+            ) {
+                id,
+                nomeunico,
+                img
+            }
+        }`;
+
+        const contentResponseBird = await requestPost(queryBird);
+
+        birds = contentResponseBird.data.allBirds;
+
+        const queryList = birds.map(item =>
+            `query{
+                allGalleries(
+                    filter: {
+                    fkBird: {
+                        eq: "${item.id}"
+                        }
+                    }
+                ){
+                    id,
+                    imgs
+                }
+            }`
+        );
+        let dados: BirdImage[] = [];
+        await Promise.all(queryList.map(async (query) =>
+        {
+            const resultado = await requestPost(query);
+            dados.push(resultado.data.allGalleries[0]);
+        }));
+
+        console.log({ dados });
+        return { ...dados };
+
+    }
+
+    const queryGallerie = `query{
+        allGalleries{
+            id,
+            imgs
+        }
+   }`;
+
+    const contentResponseGallerie = await requestPost(queryGallerie);
+
+    return contentResponseGallerie.data.allGalleries as BirdImage[];
 }

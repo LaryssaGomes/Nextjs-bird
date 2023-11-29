@@ -4,8 +4,6 @@ import Text from '@src/components/Text/Text';
 import { useTheme } from '@src/theme/ThemeProvider';
 import { ReactNode, useState } from 'react';
 import { StyleSheet } from '@src/theme/StyleSheet';
-import { BaseComponent } from '@src/theme/BaseComponent';
-import Link from '@src/components/Link/Link';
 import { animated, useSpring } from 'react-spring';
 import { MenuHamburger } from './MenuHmburger';
 import { parseStyleSheet } from '@displaykit/responsive_styles';
@@ -44,11 +42,11 @@ const TextLink = styled(animated.a)`
 `;
 const animeteExpand = keyframes`
 0% { transform: translate(-50%, -50%) scale(0);}
-  100% {   transform: translate(-50%, -50%) scale(40); }
+  100% {   transform: translate(-50%, -50%) scale(30); }
 `;
 
 const animeteMin = keyframes`
-  0% { transform:  translate(-50%, -50%) scale(40); }
+  0% { transform:  translate(-50%, -50%) scale(30); }
   100% { transform: translate(-50%, -50%) scale(0); }
 `;
 
@@ -60,10 +58,9 @@ const BackgroundMobile = styled(Box)<BackgroundMobileProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   z-index: 4;
   background-color: #31754c;
+  max-height: 100%;
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
   ${({ animationStatus }) => {
     if (animationStatus === StatusMobileMenuBackground.EXPANDIR) {
@@ -154,17 +151,12 @@ export const Menu = (props: MenuProps) => {
         >
           <li>
             <Text variant="body1">
-              <TextLink>Página inicial</TextLink>
+              <TextLink href="/">Página inicial</TextLink>
             </Text>
           </li>
           <li>
             <Text variant="body1">
-              <TextLink>Sobre</TextLink>
-            </Text>
-          </li>
-          <li>
-            <Text variant="body1">
-              <TextLink>Contato</TextLink>
+              <TextLink>Galeria</TextLink>
             </Text>
           </li>
         </Box>

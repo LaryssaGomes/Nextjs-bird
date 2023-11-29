@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '../Box/Box';
 import { useTheme } from 'styled-components';
 import { StyleSheet } from '@src/theme/StyleSheet';
+import { BaseComponent } from '@src/theme/BaseComponent';
 
 interface GridProps {
   columns: number;
@@ -20,6 +21,7 @@ interface GridProps {
   alignItems: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   children?: React.ReactNode;
   styleSheet?: StyleSheet;
+  tag?: 'string';
 }
 
 export default function Grid({
@@ -29,32 +31,34 @@ export default function Grid({
   justifyContent,
   alignItems,
   styleSheet,
+  tag,
 }: GridProps) {
   const theme = useTheme();
 
   const gridStyle = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${columns || 2}, auto)`,
+    gridTemplateColumns: '50px 100px 50px 150px',
     gap: spacing || '16px',
     justifyContent: justifyContent || 'start',
     alignItems: alignItems || 'start',
   };
 
   return (
-    <Box
+    <BaseComponent
+      as="div"
       styleSheet={{
         ...gridStyle,
         ...styleSheet,
       }}
     >
       {children}
-    </Box>
+    </BaseComponent>
   );
 }
 
 interface GridItemProps {
-  colSpan: number;
-  rowSpan: number;
+  colSpan?: number;
+  rowSpan?: number;
   children?: React.ReactNode;
   styleSheet?: StyleSheet;
 }

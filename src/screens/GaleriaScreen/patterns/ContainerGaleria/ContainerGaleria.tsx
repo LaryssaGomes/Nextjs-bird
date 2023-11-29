@@ -5,6 +5,9 @@ import BoxSearch from '@src/components/BoxSearch/BoxSearch';
 
 export const ContainerGaleria = () => {
   const theme = useTheme();
+  const handleSearch = (value: string) => {
+    console.log(value);
+  };
   return (
     <Box
       styleSheet={{
@@ -29,6 +32,7 @@ export const ContainerGaleria = () => {
         >
           Encontre lindas fotos da sua ave favorita
         </Text>
+        <BoxSearch onFiltroChange={handleSearch} />
       </Box>
     </Box>
   );

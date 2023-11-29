@@ -46,10 +46,10 @@ export async function getStaticProps({ params }) {
     props: {
       ...data,
       name: params?.name,
-      imgsGallery: [...data.imgs],
+      imgsGallery: [...data?.imgs],
       referencias: [
-        { link: data.referencias[0], name: 'Wikipidia' },
-        { link: data.referencias[1], name: 'Wikiaves' },
+        { link: data?.referencias[0], name: 'Wikipidia' },
+        { link: data?.referencias[1], name: 'Wikiaves' },
       ],
     },
   };

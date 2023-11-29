@@ -8,6 +8,7 @@ import { getNameAves } from 'services/datoCMS';
 import { useState } from 'react';
 import { ProductCard } from './patterns/ProductCard/ProductCard';
 import { BirdNotFound } from '../../components/BirdNotFound/BirdNotFound';
+import { CardSkeleton } from '@src/components/CardSkeleton/CardSkeleton';
 
 export default function HomeScreen() {
   const [search, setSearch] = useState('');
@@ -16,6 +17,7 @@ export default function HomeScreen() {
     error,
     isLoading,
   } = useQuery(['aves', search], () => getNameAves(search));
+  console.log({ avesData });
 
   const handleSearch = (value: string) => {
     setSearch(value);
@@ -65,7 +67,15 @@ export default function HomeScreen() {
         }}
       >
         <BackgroundContainer>
-          {isLoading && <div>skeleton</div>}
+          {isLoading && (
+            <CardSkeleton
+              lines={5}
+              styleSheet={{
+                width: { xs: '140px', md: '250px', lg: '345px' },
+                height: { xs: '250px', md: '170px', lg: '240px' },
+              }}
+            />
+          )}
           {avesData?.length == 0 ? (
             <BirdNotFound>
               Ops! Não consegui encontrar seu pássaro na minha investigação,

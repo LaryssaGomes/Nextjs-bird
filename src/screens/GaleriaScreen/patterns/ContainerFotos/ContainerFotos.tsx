@@ -2,41 +2,21 @@ import Box from '@src/components/Box/Box';
 import { useTheme } from '@src/theme/ThemeProvider';
 import Text from '@src/components/Text/Text';
 import BoxSearch from '@src/components/BoxSearch/BoxSearch';
-import Grid from '@src/components/Grid/Grid';
+import Image from '@src/components/Image/Image';
+
+interface ProductCardProps {
+  introducao: string;
+  img: {
+    img: string;
+    alt?: string;
+  };
+  nomeUnico: string;
+}
 
 export const ContainerFotos = () => {
-  const theme = useTheme();
   return (
-    <Grid
-      columns={6}
-      spacing={''}
-      justifyContent={'center'}
-      alignItems={'center'}
-    >
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-      <Grid.Item colSpan={1} rowSpan={2}>
-        Fotos
-      </Grid.Item>
-    </Grid>
+    <Box>
+      <Image src={''} alt={''} />
+    </Box>
   );
 };
