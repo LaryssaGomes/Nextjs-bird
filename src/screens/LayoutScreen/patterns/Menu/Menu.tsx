@@ -27,6 +27,7 @@ const TextLink = styled(animated.a)`
   z-index: 5;
   cursor: pointer;
   display: inline-block;
+
   &:after {
     content: ' ';
     display: block;

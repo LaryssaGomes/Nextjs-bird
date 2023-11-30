@@ -29,7 +29,9 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    all: unset;
   }
+
   input {
     border: none ;
     background: none ;

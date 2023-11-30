@@ -85,6 +85,7 @@ export default function BirdInformationScreen({
                 display: 'flex',
                 flexDirection: 'row',
                 gap: '0.5rem',
+                cursor: 'pointer',
               }}
             >
               <MdInsertLink size={16} />

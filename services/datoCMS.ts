@@ -157,6 +157,7 @@ type BirdImageDetail = {
 
 export const getNameGaleria = async (name?: string): Promise<BirdImage[]> =>
 {
+
     let birds;
     if (name)
     {
@@ -199,8 +200,9 @@ export const getNameGaleria = async (name?: string): Promise<BirdImage[]> =>
             dados.push(resultado.data.allGalleries[0]);
         }));
 
-        console.log({ dados });
-        return { ...dados };
+        const error = dados.length === 0;
+
+        return dados;
 
     }
 
@@ -213,5 +215,8 @@ export const getNameGaleria = async (name?: string): Promise<BirdImage[]> =>
 
     const contentResponseGallerie = await requestPost(queryGallerie);
 
-    return contentResponseGallerie.data.allGalleries as BirdImage[];
+    const data = contentResponseGallerie.data.allGalleries as BirdImage[];
+    const error = data.length === 0;
+
+    return data;
 }

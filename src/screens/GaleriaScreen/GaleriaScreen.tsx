@@ -28,13 +28,11 @@ const CardBox = styled.div`
 
 export default function GaleriaScreen() {
   const [search, setSearch] = useState('');
-  const {
-    data: avesData,
-    error,
-    isLoading,
-  } = useQuery(['aves-galeria', search], () => getNameGaleria(search));
+  const { data: avesData, isLoading } = useQuery(['aves-galeria', search], () =>
+    getNameGaleria(search),
+  );
 
-  console.log({ avesData });
+  const error = avesData?.length === 0;
 
   const handleSearch = (value: string) => {
     setSearch(value);
@@ -78,13 +76,15 @@ export default function GaleriaScreen() {
           />
         )}
 
-        {avesData == undefined ? (
+        {error && (
           <BirdNotFound>
             Ops! Não consegui encontrar seu pássaro na minha investigação,
             parece que ele está em migração. <br />
             Tente outra ave, darei o meu melhor para encontrar.
           </BirdNotFound>
-        ) : (
+        )}
+
+        {avesData &&
           Object.values(avesData).map((itemsImgs) =>
             itemsImgs?.imgs?.map((item, index) => (
               <CardBox>
@@ -130,8 +130,7 @@ export default function GaleriaScreen() {
                 </Text>
               </CardBox>
             )),
-          )
-        )}
+          )}
       </BackgroundContainer>
     </>
   );

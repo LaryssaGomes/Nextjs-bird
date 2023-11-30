@@ -59,6 +59,9 @@ export const ProductCard = ({
               marginTop: { xs: '1rem', md: '0px' },
               marginBottom: '1rem',
               textAlign: { xs: 'center', md: 'start' },
+              width: { xs: '150px', md: '140px', lg: '150px' },
+              overflow: 'hidden',
+              whiteSpace: 'break-spaces',
             }}
           >
             {formatNome(nomeUnico)}
@@ -66,12 +69,11 @@ export const ProductCard = ({
           <Text
             styleSheet={{
               marginBottom: '1rem',
-              maxWidth: { xs: '150px', md: '140px', lg: '200px' },
-              maxHeight: { xs: '80px', md: '80px', lg: '100px' },
-              width: '100%',
+              width: { xs: '150px', md: '140px', lg: '150px' },
+              height: { xs: '80px', md: '80px', lg: '100px' },
+              textAlign: 'justify',
               overflow: 'hidden',
               whiteSpace: 'break-spaces',
-              textOverflow: 'ellipsis',
             }}
           >
             {introducao}
