@@ -24,7 +24,7 @@ type BirdInformationScreenProps = {
     img: string;
     alt?: string;
   };
-  imgsGallery: any[];
+  imgsGallery?: any[];
 };
 
 export async function getStaticPaths() {
@@ -45,10 +45,10 @@ export async function getStaticProps({ params }) {
     props: {
       ...data,
       name: params?.name,
-      imgsGallery: [...data?.imgs],
+      imgsGallery: [...data[0]?.imgs],
       referencias: [
-        { link: data?.referencias[0], name: 'Wikipidia' },
-        { link: data?.referencias[1], name: 'Wikiaves' },
+        { link: data[0]?.referencias[0], name: 'Wikipidia' },
+        { link: data[0]?.referencias[1], name: 'Wikiaves' },
       ],
     },
   };
