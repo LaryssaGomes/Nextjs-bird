@@ -1,12 +1,10 @@
 import Box from '@src/components/Box/Box';
-import { ContainerFotos } from './patterns/ContainerFotos/ContainerFotos';
 import BoxSearch from '@src/components/BoxSearch/BoxSearch';
 import Text from '@src/components/Text/Text';
 import Image from '@src/components/Image/Image';
 import { BackgroundContainer } from '../HomeScreen/patterns/BackgroundContainer/BackgroundContainer';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
-import { useDebounce } from '@uidotdev/usehooks';
 import { getNameGaleria } from 'services/datoCMS';
 import { BirdNotFound } from '@src/components/BirdNotFound/BirdNotFound';
 import { CardSkeleton } from '@src/components/CardSkeleton/CardSkeleton';
