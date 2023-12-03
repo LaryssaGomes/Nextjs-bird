@@ -1,11 +1,9 @@
-import Grid from '@src/components/Grid/Grid';
 import Link from '@src/components/Link/Link';
 import {
   InfoBox,
   ContainerTitle,
 } from '@src/screens/BirdInformationScreen/patterns/InfoBox/InfoBox';
 import { ContainerMain } from '@src/screens/BirdInformationScreen/patterns/ContainerMain/ContainerMain';
-import { useRouter } from 'next/router';
 import { getInformacoesAdcionaisAve } from 'services/datoCMS';
 import { Gallery } from './patterns/Gallery/Gallery';
 import { MdInsertLink } from 'react-icons/md';
@@ -27,10 +25,7 @@ type BirdInformationScreenProps = {
 };
 
 export async function getStaticPaths() {
-  const paths = [
-    { params: { name: 'Asa-de-sabre-canela' } },
-    { params: { name: 'Formigueiro-de-cauda-castanha' } },
-  ];
+  const paths = [{ params: { name: 'Bico-de-lacre' } }];
   return {
     paths: paths,
     fallback: 'blocking', // false or "blocking"
@@ -39,15 +34,16 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const data = await getInformacoesAdcionaisAve(params?.name);
+  const firstDataItem = Array.isArray(data) ? data[0] : data;
 
   return {
     props: {
-      ...data,
+      ...firstDataItem,
       name: params?.name,
-      imgsGallery: [...data[0]?.imgs],
+      imgsGallery: [...firstDataItem?.imgs],
       referencias: [
-        { link: data[0]?.referencias[0], name: 'Wikipidia' },
-        { link: data[0]?.referencias[1], name: 'Wikiaves' },
+        { link: firstDataItem?.referencias[0], name: 'Wikipidia' },
+        { link: firstDataItem?.referencias[1], name: 'Wikiaves' },
       ],
     },
   };
