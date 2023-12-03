@@ -3,25 +3,18 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   // [NextJS Reset]
   html {
-    display: flex;
+    
+   
     min-height: 100vh;
-    flex-direction: column;
+    min-width: 100vw;
   }
-  body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;   
-    overflow-x: hidden;
+  body{
+    min-height: 100vh;
+    min-width: 100vw;
   }
   #__next {
- 
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex-shrink: 0;
+     min-height: 100vh;
+    min-width: 100vw;
   }
   ul {
     list-style: none; 

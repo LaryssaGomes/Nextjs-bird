@@ -14,7 +14,7 @@ export const Background = ({ children }: BackgroundProps) => {
   return (
     <Box
       styleSheet={{
-        width: '100svw',
+        minWidth: '100svw',
         backgroundColor: theme.colors.neutral.x050,
       }}
     >
@@ -47,9 +47,9 @@ export const Background = ({ children }: BackgroundProps) => {
           styleSheet={{
             alignItems: 'center',
             maxWidth: '1280px',
-            width: '100%',
+            minWidth: '100%',
             zIndex: 1,
-            padding: '0rem 2rem',
+            padding: { xs: '0rem', md: '0rem 2rem' },
           }}
         >
           {children}
