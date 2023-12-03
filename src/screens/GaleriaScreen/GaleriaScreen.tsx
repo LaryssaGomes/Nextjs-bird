@@ -6,6 +6,7 @@ import Image from '@src/components/Image/Image';
 import { BackgroundContainer } from '../HomeScreen/patterns/BackgroundContainer/BackgroundContainer';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
+import { useDebounce } from '@uidotdev/usehooks';
 import { getNameGaleria } from 'services/datoCMS';
 import { BirdNotFound } from '@src/components/BirdNotFound/BirdNotFound';
 import { CardSkeleton } from '@src/components/CardSkeleton/CardSkeleton';
@@ -28,6 +29,7 @@ const CardBox = styled.div`
 
 export default function GaleriaScreen() {
   const [search, setSearch] = useState('');
+
   const { data: avesData, isLoading } = useQuery(['aves-galeria', search], () =>
     getNameGaleria(search),
   );

@@ -69,7 +69,7 @@ export const getNameAves = async (name?: string): Promise<BirdInfo[]> =>
 type BirdInfoAdd = {
     id: string;
     dados: { titulo: string; dados: any[] }[];
-    referencias: string[];
+    referencias: any[];
     nomeunico: string;
     introducao: string;
     img: { img: string; alt: string };

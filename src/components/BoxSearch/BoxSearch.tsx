@@ -12,10 +12,16 @@ interface BoxSearchProps {
 
 const BoxSearch = ({ onFiltroChange }: BoxSearchProps) => {
   const [inputValue, setInputValue] = useState('');
+  const [debouncedSearchTerm] = useDebounce(inputValue, 1000);
+
+  useEffect(() => {
+    onFiltroChange(inputValue);
+  }, [debouncedSearchTerm]);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
+
   const handleInput = () => {
     onFiltroChange(inputValue);
   };

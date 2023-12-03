@@ -6,6 +6,10 @@ import Link from '@src/components/Link/Link';
 
 const formatNome = (name: string) => {
   name = name.normalize('NFD').replaceAll('-', ' ');
+  if (name.length > 17) {
+    name = name.substring(0, 17) + '...';
+  }
+
   return name;
 };
 
@@ -42,7 +46,7 @@ export const ProductCard = ({
           borderRadius: '25px',
           objectFit: 'cover',
         }}
-        src={img.img}
+        src={img?.img}
         alt={img?.alt}
       />
 
@@ -50,18 +54,19 @@ export const ProductCard = ({
         styleSheet={{
           marginLeft: { xs: '', md: '1.5rem' },
           justifyContent: 'space-between',
+          height: { xs: 'unset', md: 'unset', lg: '200px' },
         }}
       >
         <Box>
           <Text
             variant="title3"
             styleSheet={{
-              marginTop: { xs: '1rem', md: '0px' },
-              marginBottom: '1rem',
+              marginTop: { xs: '1rem', md: 'unset' },
+              marginBottom: { xs: '1rem' },
               textAlign: { xs: 'center', md: 'start' },
               width: { xs: '150px', md: '140px', lg: '150px' },
               overflow: 'hidden',
-              whiteSpace: 'break-spaces',
+              whiteSpace: 'nowrap',
             }}
           >
             {formatNome(nomeUnico)}

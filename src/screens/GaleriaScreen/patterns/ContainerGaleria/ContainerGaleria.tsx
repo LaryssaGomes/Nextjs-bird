@@ -5,9 +5,7 @@ import BoxSearch from '@src/components/BoxSearch/BoxSearch';
 
 export const ContainerGaleria = () => {
   const theme = useTheme();
-  const handleSearch = (value: string) => {
-    console.log(value);
-  };
+
   return (
     <Box
       styleSheet={{

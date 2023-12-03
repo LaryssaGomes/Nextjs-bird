@@ -17,7 +17,6 @@ export default function HomeScreen() {
     error,
     isLoading,
   } = useQuery(['aves', search], () => getNameAves(search));
-  console.log({ avesData });
 
   const handleSearch = (value: string) => {
     setSearch(value);
