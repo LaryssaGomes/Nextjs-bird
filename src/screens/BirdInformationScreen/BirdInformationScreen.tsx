@@ -14,7 +14,6 @@ import Box from '@src/components/Box/Box';
 type BirdInformationScreenProps = {
   name: string;
   referencias?: any[];
-  aveId: string;
   introducao: string;
   dados: {
     titulo: string;
@@ -57,7 +56,6 @@ export async function getStaticProps({ params }) {
 export default function BirdInformationScreen({
   name,
   referencias,
-  aveId,
   dados,
   introducao,
   img,
