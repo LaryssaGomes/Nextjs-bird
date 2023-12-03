@@ -127,6 +127,7 @@ export const Menu = (props: MenuProps) => {
           styleSheet={{
             position: 'absolute',
             display: { xs: 'flex', md: 'none' },
+            marginLeft: { xs: '2rem', md: '0rem' },
           }}
           menuIsVisible={
             animationStatus === StatusMobileMenuBackground.EXPANDIR
