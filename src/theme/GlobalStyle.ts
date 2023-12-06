@@ -3,18 +3,24 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   // [NextJS Reset]
   html {
-    
-   
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100%;
+    padding: 0; 
+    margin: 0;
+    background-color: #DDEBE3;
+
   }
   body{
     min-height: 100vh;
     min-width: 100vw;
+    padding: 0; 
+    margin: 0;
   }
   #__next {
      min-height: 100vh;
     min-width: 100vw;
+    padding: 0; 
+    margin: 0;
   }
   ul {
     list-style: none; 
