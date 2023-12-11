@@ -19,12 +19,27 @@ const CardBox = styled.div`
   overflow: hidden;
   flex: 1;
   border-radius: 20px;
+
   &:hover {
     flex: 6;
   }
+
   &:hover > div {
     transition: 0.5s linear;
     transform: translateY(-4rem);
+  }
+
+  @media (max-width: 767px) {
+    &:hover {
+      flex: 1;
+    }
+    & > div {
+      transform: translateY(-4rem);
+    }
+    &:hover > div {
+      transform: none;
+      transform: translateY(-4rem);
+    }
   }
 `;
 
@@ -34,7 +49,7 @@ export const Gallery = ({ imgsGallery }: GalleryProps) => {
       <ContainerTitle title="Galeria" />
       <Box
         styleSheet={{
-          flexDirection: 'row',
+          flexDirection: { xs: 'column', md: 'row' },
           gap: '1rem',
         }}
       >
@@ -54,11 +69,8 @@ export const Gallery = ({ imgsGallery }: GalleryProps) => {
             <Box
               styleSheet={{
                 transform: 'translateY(0rem) ',
-                background: '#31754C',
-                padding: '0.5rem',
                 marginLeft: '1rem',
                 maxWidth: '220px',
-                borderRadius: '15px',
               }}
             >
               <Text
@@ -67,6 +79,10 @@ export const Gallery = ({ imgsGallery }: GalleryProps) => {
                   display: 'flex',
                   flexDirection: 'row',
                   gap: '0.5rem',
+                  alignItems: 'center',
+                  background: '#31754C',
+                  padding: '0.5rem',
+                  borderRadius: '15px',
                 }}
               >
                 Fotografo:
@@ -75,7 +91,7 @@ export const Gallery = ({ imgsGallery }: GalleryProps) => {
                     styleSheet={{
                       display: 'flex',
                       flexDirection: 'row',
-                      alingItems: 'center',
+                      alignItems: 'center',
                       gap: '0.5rem',
                     }}
                   >
