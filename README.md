@@ -10,8 +10,7 @@ Este projeto visa criar um site dinâmico com as seguintes funcionalidades e car
 - Galeria de Fotos do Passado: Apresenta uma coleção de fotos históricas.
 - Integração de API: Integração com APIs para buscar dados e recursos externos.
 - Pesquisa de Aves: Uma funcionalidade de pesquisa para identificar aves com base em critérios específicos.
-- Testes: Implementação de testes para garantir a robustez do código.
-- SEO (Otimização de Mecanismos de Busca): Estratégias de otimização para melhorar a visibilidade nos mecanismos de busca.
+
 
 ## Estrutura do Projeto
 
@@ -24,9 +23,8 @@ O projeto possui a seguinte estrutura de diretórios:
 
 |-- public/ # Recursos estáticos (imagens, etc.)
 
-|-- styles/ # Estilos globais e estilização
+|-- services/ # Api dadoCMS
 
-|-- utils/ # Funções e utilitários auxiliares
 
 ## Iniciando
 
