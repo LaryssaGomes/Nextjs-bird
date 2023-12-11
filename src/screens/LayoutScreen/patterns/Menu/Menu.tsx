@@ -74,6 +74,7 @@ const NavList = styled(Box)`
   display: flex;
   width: 50%;
   justify-content: space-between;
+  flex-direction: row;
   list-style: none;
 
   a {
