@@ -1,6 +1,7 @@
 import Box from '@src/components/Box/Box';
 import ButtonBase from '@src/components/Button/ButtonBase';
 import Image from '@src/components/Image/Image';
+import Link from '@src/components/Link/Link';
 import Text from '@src/components/Text/Text';
 
 export default function Pagina404() {
@@ -69,27 +70,29 @@ export default function Pagina404() {
         >
           Ooops! Parece que os pássaros já migraram para outra página!
         </Text>
-        <ButtonBase
-          styleSheet={{
-            justifyContent: 'center',
-            background: '#31754C',
-            padding: { xs: '0.4rem', md: '0.8rem', lg: '1rem' },
-            transform: 'skew(-20deg)',
-            borderRadius: '5px',
-          }}
-        >
-          <Text
+        <Link href="/">
+          <ButtonBase
             styleSheet={{
-              color: '#fff',
-              transform: 'skew(20deg)',
-              textAlign: 'center',
-              fontWeight: '700',
+              justifyContent: 'center',
+              background: '#31754C',
+              padding: { xs: '0.4rem', md: '0.8rem', lg: '1rem' },
+              transform: 'skew(-20deg)',
+              borderRadius: '5px',
             }}
-            variant="body1"
           >
-            Volta Para Home
-          </Text>
-        </ButtonBase>
+            <Text
+              styleSheet={{
+                color: '#fff',
+                transform: 'skew(20deg)',
+                textAlign: 'center',
+                fontWeight: '700',
+              }}
+              variant="body1"
+            >
+              Volta Para Home
+            </Text>
+          </ButtonBase>
+        </Link>
       </Box>
     </Box>
   );
