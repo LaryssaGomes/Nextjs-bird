@@ -47,8 +47,8 @@ interface MenuProps {
 }
 const MenuIcon = styled(BaseComponent)<MenuProps>`
   cursor: pointer;
-  position: relative;
-  z-index: 5;
+  display: block;
+  z-index: 2;
 
   ${({ styleSheet }) => parseStyleSheet(styleSheet)}
 

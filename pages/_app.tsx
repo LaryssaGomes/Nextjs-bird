@@ -6,17 +6,17 @@ import { Footer } from '@src/screens/LayoutScreen/patterns/Footer/Footer';
 import { Menu } from '@src/screens/LayoutScreen/patterns/Menu/Menu';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import BoxSearch from '@src/components/BoxSearch/BoxSearch';
+import { MenuTeste } from '@src/screens/LayoutScreen/patterns/Menu/MenuTest';
 
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <h1>yg7yuggggg</h1>
       <ThemeProvider>
         <GlobalStyle />
         <Background>
-          <Menu />
+          <MenuTeste />
 
           <QueryClientProvider client={queryClient}>
             <Component {...pageProps} />
