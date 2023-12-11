@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     min-width: 100vw;
     padding: 0; 
     margin: 0;
+    overflow-x: hidden;
   }
   #__next {
      min-height: 100vh;

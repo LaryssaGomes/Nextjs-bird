@@ -9,10 +9,17 @@ import { MenuHamburger } from './MenuHmburger';
 import { LuBird } from 'react-icons/lu';
 import { parseStyleSheet } from '@displaykit/responsive_styles';
 
-const Header = styled.header`
-  padding-inline: 16px;
-  width: 100vw;
-  height: 70px;
+interface HeaderProps {
+  styleSheet: StyleSheet;
+}
+
+const Header = styled(Box)<HeaderProps>`
+  flex-direction: row;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  justify-content: center;
+  ${({ styleSheet }) => parseStyleSheet(styleSheet)}
 `;
 
 interface NavProps {
@@ -57,13 +64,13 @@ const Nav = styled.nav<NavProps>`
     `};
 `;
 
-const Logo = styled.a`
+const Logo = styled(Box)`
   color: #31754c;
   font-size: 48px;
   z-index: 2;
 `;
 
-const NavList = styled.ul`
+const NavList = styled(Box)`
   display: flex;
   width: 50%;
   justify-content: space-between;
@@ -134,19 +141,11 @@ const TextLink = styled.a`
 `;
 
 export const Menu = () => {
-  const theme = useTheme();
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <Box
-      tag="header"
+    <Header
       styleSheet={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        maxWidth: '1280px',
-        width: '100%',
-
-        justifyContent: 'center',
         padding: { xs: '2rem 3rem 2rem 3rem', md: '1rem' },
       }}
     >
@@ -162,7 +161,7 @@ export const Menu = () => {
           menuIsVisible={isActive}
           handleMenuIsVisible={() => setIsActive(!isActive)}
         />
-        <NavList>
+        <NavList tag="ul">
           <TextLink href="/">
             <Text variant="body1"> Home</Text>
           </TextLink>
@@ -171,6 +170,6 @@ export const Menu = () => {
           </TextLink>
         </NavList>
       </Nav>
-    </Box>
+    </Header>
   );
 };
